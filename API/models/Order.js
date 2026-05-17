@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
-const menuSchema = require('./Menu').schema;
+const menu = require('./Menu');
+const menuSchema = menu.schema;    
 const Table = require('./Table');
 
 const orderSchema = new mongoose.Schema({
@@ -24,7 +25,7 @@ const orderSchema = new mongoose.Schema({
         required: true
     },
     menuItems: {
-        type: [menuSchema],
+        type: [menu.schema],
         required: true
     }
 });
