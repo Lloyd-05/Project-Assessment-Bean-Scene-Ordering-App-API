@@ -1,6 +1,4 @@
-const express= require('express');
-const router = express.Router();
-
+const router = require("express").Router();
 const Menu = require('../models/Menu');
 
 // Get all menu items
@@ -11,9 +9,7 @@ router.get('/', async (req, res) => {
     } catch (err) {
         res.status(500).json({ message: err.message });
     }
-}
-);
-
+});
 
 router.post('/', async (req, res) => {
     const { name, description, category, price, photo, dietaryFlags, Availability } = req.body;
@@ -115,3 +111,5 @@ router.delete('/:id', async (req, res) => {
         res.status(500).json({ message: err.message });
     }
 });
+
+module.exports = router;
