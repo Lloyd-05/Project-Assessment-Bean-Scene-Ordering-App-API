@@ -5,10 +5,10 @@ const Table = require('./Table');
 
 const orderSchema = new mongoose.Schema({
 
-    orderNumb: {
-        type: mongoose.Schema.Types.ObjectId,
-        auto: true
-    },
+    // orderNumb: {
+    //     type: mongoose.Schema.Types.ObjectId,
+    //     auto: true
+    // },
     tableCode: {
         type: String,
         required: true
@@ -26,26 +26,25 @@ const orderSchema = new mongoose.Schema({
     },
     menuItems: {
         type: [
-            {
-                menuItemID: {
+            new mongoose.Schema({
+                menuItemId: {
                     type: mongoose.Schema.Types.ObjectId,
                     ref: 'Menu',
                     required: true
                 },
+
                 quantity: {
                     type: Number,
                     required: true,
                     min: 1
                 }
-            }
-        ],
-        required: true
+            }, { _id: false })
+        ]
     },
-
 },
-    {
+        {
         collection: 'Order'
-    }
+        },
 );
 
 module.exports = mongoose.model('Order', orderSchema);

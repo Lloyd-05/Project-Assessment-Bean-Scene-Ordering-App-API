@@ -11,7 +11,6 @@ const sendMenuData = async () => {
 
         await Menu.create([
             {
-                MenuItemID: new mongoose.Types.ObjectId(),
                 name: "Cappuccino",
                 description: "Espresso with steamed milk and a layer of foam",
                 category: "drinks",
@@ -21,7 +20,6 @@ const sendMenuData = async () => {
                 Availability: true
             },
             {
-                MenuItemID: new mongoose.Types.ObjectId(),
                 name: "Avocado Toast",
                 description: "Toasted bread topped with mashed avocado, cherry tomatoes, and a sprinkle of chili flakes",
                 category: "entrees",
@@ -31,7 +29,6 @@ const sendMenuData = async () => {
                 Availability: true
             },
             {
-                MenuItemID: new mongoose.Types.ObjectId(),
                 name: "Chocolate Cake",
                 description: "Rich and moist chocolate cake with a layer of chocolate ganache",
                 category: "desserts",
@@ -41,7 +38,6 @@ const sendMenuData = async () => {
                 Availability: true
             },
             {
-                MenuItemID: new mongoose.Types.ObjectId(),
                 name: "Caesar Salad",
                 description: "Crisp romaine lettuce tossed with Caesar dressing, croutons, and Parmesan cheese",
                 category: "sides",
@@ -51,7 +47,6 @@ const sendMenuData = async () => {
                 Availability: true
             },
             {
-                MenuItemID: new mongoose.Types.ObjectId(),
                 name: "Steak Sandwich",
                 description: "Grilled steak served on a toasted bun with caramelized onions and horseradish sauce",
                 category: "mains",
@@ -61,7 +56,6 @@ const sendMenuData = async () => {
                 Availability: true
             },
             {
-                MenuItemID: new mongoose.Types.ObjectId(),
                 name: "Smashed Pavlova",
                 description: "A deconstructed version of the classic pavlova, featuring a meringue base topped with whipped cream and fresh berries",
                 category: "specials",

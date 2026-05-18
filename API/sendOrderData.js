@@ -24,15 +24,15 @@ const sendOrderData = async () => {
                 status: "in-progress",
                 menuItems: [
                     {
-                        menuItemID: Cappuccino._id,
+                        menuItemId: Cappuccino._id,
                         quantity: 2
                     },
                     {
-                        menuItemID: AvocadoToast._id,
+                        menuItemId: AvocadoToast._id,
                         quantity: 1
                     },
                     {
-                        menuItemID: ChocolateCake._id,
+                        menuItemId: ChocolateCake._id,
                         quantity: 1,
                     }
                 ]
@@ -43,11 +43,11 @@ const sendOrderData = async () => {
                 status: "completed",
                 menuItems: [
                     {
-                        menuItemID: CaesarSalad._id,
+                        menuItemId: CaesarSalad._id,
                         quantity: 1
                     },
                     {
-                        menuItemID: SteakSandwich._id,
+                        menuItemId: SteakSandwich._id,
                         quantity: 2
                     }
                 ]
