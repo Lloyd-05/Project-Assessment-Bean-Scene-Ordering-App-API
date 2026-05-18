@@ -1,13 +1,14 @@
 const mongoose = require('mongoose');
-const menuSchema = require('./Menu').schema;
+const menu = require('./Menu');
+const menuSchema = menu.schema;
 const Table = require('./Table');
 
 const orderSchema = new mongoose.Schema({
 
-    orderNumb: {
-        type: mongoose.Schema.Types.ObjectId,
-        auto: true
-    },
+    // orderNumb: {
+    //     type: mongoose.Schema.Types.ObjectId,
+    //     auto: true
+    // },
     tableCode: {
         type: String,
         required: true
@@ -24,9 +25,26 @@ const orderSchema = new mongoose.Schema({
         required: true
     },
     menuItems: {
-        type: [menuSchema],
-        required: true
-    }
-});
+        type: [
+            new mongoose.Schema({
+                menuItemId: {
+                    type: mongoose.Schema.Types.ObjectId,
+                    ref: 'Menu',
+                    required: true
+                },
+
+                quantity: {
+                    type: Number,
+                    required: true,
+                    min: 1
+                }
+            }, { _id: false })
+        ]
+    },
+},
+        {
+        collection: 'Order'
+        },
+);
 
 module.exports = mongoose.model('Order', orderSchema);

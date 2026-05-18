@@ -2,10 +2,10 @@ const mongoose = require('mongoose');
 
 const menuSchema = new mongoose.Schema({
 
-    MenuItemID: {
-        type: mongoose.Schema.Types.ObjectId,
-        auto: true
-    },
+    // MenuItemID: {
+    //     type: mongoose.Schema.Types.ObjectId,
+    //     auto: true
+    // },
     name: {
         type: String,
         required: true
@@ -28,13 +28,17 @@ const menuSchema = new mongoose.Schema({
         required: false
     },
     dietaryFlags: {
-        type: String,
+        type: [String],
         required: true
     },
     Availability: {
         type: Boolean,
         required: true
     },
-});
+},
+    {
+        collection: 'Menu'
+    },
+);
 
 module.exports = mongoose.model('Menu', menuSchema);

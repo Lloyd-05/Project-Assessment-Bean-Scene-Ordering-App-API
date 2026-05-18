@@ -10,8 +10,14 @@ const tableSchema = new mongoose.Schema({
         type: String,
         required: true,
         unique: true
-    }
+    },
+},
+    { _id: false },
 
-});
+    {
+        collection: 'Order'
+    },
+
+);
 
 module.exports = mongoose.model('Table', tableSchema);

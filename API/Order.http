@@ -1,0 +1,62 @@
+@baseURL=http://localhost:5000
+
+###
+GET {{baseURL}}/api/orders
+
+###
+GET {{baseURL}}/api/orders/6a0b02bae9bcca1c0c3030f0
+
+###
+GET {{baseURL}}/api/orders/search?ques=O2
+
+###
+POST {{baseURL}}/api/orders
+Content-Type: application/json
+
+{
+    "tableCode": "B5",
+    "dateTime": "2024-05-15T12:30:00Z",
+    "status": "in-progress",
+    "menuItems": [
+        {
+            "menuItemId": "6a0af065f4d4ac42863330e5",
+            "quantity": 2
+        },
+        {
+            "menuItemId": "6a0aedfadb631e57ad5c3327",
+            "quantity": 1
+        }
+    ]
+}
+
+###
+
+PUT {{baseURL}}/api/orders/6a0b02bae9bcca1c0c3030f0
+Content-Type: application/json
+
+{
+    "tableCode": "B5",
+    "dateTime": "2024-05-15T12:30:00Z",
+    "status": "completed",
+    "menuItems": [
+        {
+            "menuItemId": "6a0af065f4d4ac42863330e5",
+            "quantity": 2
+        },
+        {
+            "menuItemId": "6a0aedfadb631e57ad5c3327",
+            "quantity": 1
+        }
+    ]
+}
+
+###
+PATCH {{baseURL}}/api/orders/6a0b0792a35585dffb906469
+Content-Type: application/json
+
+{
+    "status": "completed"
+}
+
+###
+DELETE {{baseURL}}/api/orders/6a0b0739a35585dffb906468
