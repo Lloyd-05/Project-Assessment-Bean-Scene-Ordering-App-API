@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
-const order = require("./models/Order");
-const menu = require("./models/Menu");
+const order = require("../models/Order");
+const menu = require("../models/Menu");
 require("dotenv").config();
 
 const sendOrderData = async () => {

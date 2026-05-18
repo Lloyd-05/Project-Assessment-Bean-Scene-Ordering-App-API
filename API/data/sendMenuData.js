@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const Menu = require("./models/Menu");
+const Menu = require("../models/Menu");
 require("dotenv").config();
 
 const sendMenuData = async () => {

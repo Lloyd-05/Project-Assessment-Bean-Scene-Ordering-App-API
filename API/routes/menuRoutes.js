@@ -51,10 +51,8 @@ router.post("/", async (req, res) => {
         Availability
     });
     try {
-        const menuItems = new Menu(req.body);
-        await menuItems.save();
-        res.status(201).json(menuItems);
-
+        const newMenuItem = await menuItem.save();
+        res.status(201).json(newMenuItem);
     } catch (err) {
         res.status(400).json({ message: err.message });
     }
