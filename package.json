@@ -2,6 +2,13 @@
   "dependencies": {
     "cors": "^2.8.6",
     "dotenv": "^17.4.2",
-    "express": "^5.2.1"
+    "eslint": "^10.4.0",
+    "express": "^5.2.1",
+    "mongoose": "^9.6.2"
+  },
+  "scripts": {
+    "start": "node api/Server.js",
+    "send-order-data": "node api/sendOrderData.js",
+    "send-menu-data": "node api/sendMenuData.js"
   }
 }
