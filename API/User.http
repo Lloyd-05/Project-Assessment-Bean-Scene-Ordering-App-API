@@ -1,0 +1,44 @@
+@baseURL = http://localhost:5000
+
+###
+
+GET {{baseURL}}/api/users
+
+###
+GET {{baseURL}}/api/users/6a0d921f1f7c246a8b66025b
+
+###
+GET {{baseURL}}/api/users/search?ques=manager12
+
+###
+POST {{baseURL}}/api/users
+Content-Type: application/json
+
+{
+    "username": "staff3",
+    "password": "password999",
+    "role": "staff"
+}
+
+###
+PUT {{baseURL}}/api/users/6a0d921f1f7c246a8b66025c
+Content-Type: application/json
+
+{
+    "username": "manager2",
+    "password": "password111",
+    "role": "manager"
+}
+
+###
+
+PATCH {{baseURL}}/api/users/6a0d973d8cd419fabff51f51
+Content-Type: application/json
+
+{
+    "password": "newpassword123",
+    "role": "staff"
+}
+
+###
+DELETE {{baseURL}}/api/users/6a0d921f1f7c246a8b66025c

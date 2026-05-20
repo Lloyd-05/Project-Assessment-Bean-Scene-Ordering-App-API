@@ -12,10 +12,8 @@ const tableSchema = new mongoose.Schema({
         unique: true
     },
 },
-    { _id: false },
-
     {
-        collection: 'Order'
+        collection: 'Table'
     },
 
 );
