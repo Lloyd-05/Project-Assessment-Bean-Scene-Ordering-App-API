@@ -10,6 +10,8 @@
   "scripts": {
     "start": "node api/Server.js",
     "send-order-data": "node api/data/sendOrderData.js",
-    "send-menu-data": "node api/data/sendMenuData.js"
+    "send-menu-data": "node api/data/sendMenuData.js",
+    "send-table-data": "node api/data/sendTableData.js",
+    "send-user-data": "node api/data/sendUserData.js"
   }
 }
