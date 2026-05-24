@@ -5,13 +5,17 @@
     "eslint": "^10.4.0",
     "express": "^5.2.1",
     "mongodb": "^7.2.0",
-    "mongoose": "^9.6.2"
+    "mongoose": "^9.6.2",
+    "swagger-jsdoc": "^6.3.0",
+    "swagger-ui": "^5.32.6",
+    "swagger-ui-express": "^5.0.1"
   },
   "scripts": {
     "start": "node api/Server.js",
     "send-order-data": "node api/data/sendOrderData.js",
     "send-menu-data": "node api/data/sendMenuData.js",
     "send-table-data": "node api/data/sendTableData.js",
-    "send-user-data": "node api/data/sendUserData.js"
+    "send-user-data": "node api/data/sendUserData.js",
+    "send-category-data": "node api/data/sendCategoryData"
   }
 }
