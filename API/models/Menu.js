@@ -15,8 +15,8 @@ const menuSchema = new mongoose.Schema({
         required: false
     },
     category: {
-        type: String,
-        enum: ['entrees', 'mains', 'desserts', 'drinks', 'sides', 'specials'],
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Category',
         required: true
     },
     price: {
