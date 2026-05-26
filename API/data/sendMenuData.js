@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const Menu = require("../models/Menu");
+const Category = require("../models/Category");
 require("dotenv").config();
 
 const sendMenuData = async () => {
@@ -9,11 +10,19 @@ const sendMenuData = async () => {
 
         await Menu.deleteMany({}); // Clear existing data
 
+        // Fetch categories first
+        const entreesCategory = await Category.findOne({ name: "entrees" });
+        const mainsCategory = await Category.findOne({ name: "mains" });
+        const dessertsCategory = await Category.findOne({ name: "desserts" });
+        const drinksCategory = await Category.findOne({ name: "drinks" });
+        const sidesCategory = await Category.findOne({ name: "sides" });
+        const specialsCategory = await Category.findOne({ name: "specials" });
+
         await Menu.create([
             {
                 name: "Cappuccino",
                 description: "Espresso with steamed milk and a layer of foam",
-                category: "drinks",
+                category: drinksCategory._id,
                 price: 3.5,
                 photo: null,
                 dietaryFlags: ["vegan", "Contains dairy"],
@@ -22,7 +31,7 @@ const sendMenuData = async () => {
             {
                 name: "Avocado Toast",
                 description: "Toasted bread topped with mashed avocado, cherry tomatoes, and a sprinkle of chili flakes",
-                category: "entrees",
+                category: entreesCategory._id,
                 price: 7.0,
                 photo: null,
                 dietaryFlags: ["vegan", "gluten-free"],
@@ -31,7 +40,7 @@ const sendMenuData = async () => {
             {
                 name: "Chocolate Cake",
                 description: "Rich and moist chocolate cake with a layer of chocolate ganache",
-                category: "desserts",
+                category: dessertsCategory._id,
                 price: 5.0,
                 photo: null,
                 dietaryFlags: ["Contains dairy"],
@@ -40,7 +49,7 @@ const sendMenuData = async () => {
             {
                 name: "Caesar Salad",
                 description: "Crisp romaine lettuce tossed with Caesar dressing, croutons, and Parmesan cheese",
-                category: "sides",
+                category: sidesCategory._id,
                 price: 6.0,
                 photo: null,
                 dietaryFlags: ["Contains dairy"],
@@ -49,7 +58,7 @@ const sendMenuData = async () => {
             {
                 name: "Steak Sandwich",
                 description: "Grilled steak served on a toasted bun with caramelized onions and horseradish sauce",
-                category: "mains",
+                category: mainsCategory._id,
                 price: 12.0,
                 photo: null,
                 dietaryFlags: ["Contains dairy"],
@@ -58,7 +67,7 @@ const sendMenuData = async () => {
             {
                 name: "Smashed Pavlova",
                 description: "A deconstructed version of the classic pavlova, featuring a meringue base topped with whipped cream and fresh berries",
-                category: "specials",
+                category: specialsCategory._id,
                 price: 8.0,
                 photo: null,
                 dietaryFlags: ["Contains dairy"],

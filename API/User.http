@@ -15,7 +15,7 @@ POST {{baseURL}}/api/users
 Content-Type: application/json
 
 {
-    "username": "staff3",
+    "username": "staff4",
     "password": "password999",
     "role": "staff"
 }
@@ -42,3 +42,20 @@ Content-Type: application/json
 
 ###
 DELETE {{baseURL}}/api/users/6a0d921f1f7c246a8b66025c
+
+###
+
+POST http://localhost:5000/api/auth/login
+Content-Type: application/json
+
+{
+    "username": "staff4",
+    "password": "password999"
+}
+
+###
+GET http://localhost:5000/api/menu/
+
+###
+DELETE http://localhost:5000/api/menu/6a05640f2e567066acfea409
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMDU2NDBmMmU1NjcwNjZhY2ZlYTQwNiIsInJvbGUiOiJtYW5hZ2VyIiwiaWF0IjoxNzc4NzM4NDM5LCJleHAiOjE3Nzg3NDU2Mzl9.vklqEUbWuUXAo1R_5vQ0Q3AMjV89tEa9_8KkGGstRDs
