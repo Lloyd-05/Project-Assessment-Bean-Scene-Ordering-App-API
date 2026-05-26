@@ -7,7 +7,8 @@
 
 const router = require("express").Router();
 const Menu = require("../models/Menu");
-
+const auth = require("../middleware/auth");
+const authorizeRole = require("../middleware/roleAuth");
 
 /**
  * @swagger
@@ -27,17 +28,13 @@ const Menu = require("../models/Menu");
  *       500:
  *         description: Server error
  */
-
-
-// Get all menu items
 router.get("/", async (req, res) => {
-    console.log("Calling")
-    try {
-        const menuItems = await Menu.find();
-        res.json(menuItems);
-    } catch (err) {
-        res.status(500).json({ message: `Error fetching menu items: ${err.message}` });
-    }
+  try {
+    const menuItems = await Menu.find();
+    res.json(menuItems);
+  } catch (err) {
+    res.status(500).json({ message: `Error fetching menu items: ${err.message}` });
+  }
 });
 
 /**
@@ -65,20 +62,16 @@ router.get("/", async (req, res) => {
  *       500:
  *         description: Server error
  */
-
-//Search menu items by name 
 router.get("/search", async (req, res) => {
-    try {
-        const ques = req.query.ques;
-        const items = await Menu.find({
-            name: { $regex: ques, $options: 'i' }
-        });
-
-        res.json(items);
-    }
-    catch (err) {
-        res.status(500).json({ message: err.message });
-    }
+  try {
+    const ques = req.query.ques;
+    const items = await Menu.find({
+      name: { $regex: ques, $options: "i" },
+    });
+    res.json(items);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
 });
 
 /**
@@ -105,18 +98,16 @@ router.get("/search", async (req, res) => {
  *       500:
  *         description: Server error
  */
-
-// Get a specific menu item by ID
 router.get("/:id", async (req, res) => {
-    try {
-        const menuItem = await Menu.findById(req.params.id);
-        if (!menuItem) {
-            return res.status(404).json({ message: 'Menu item not found' });
-        }
-        res.json(menuItem);
-    } catch (err) {
-        res.status(500).json({ message: err.message });
+  try {
+    const menuItem = await Menu.findById(req.params.id);
+    if (!menuItem) {
+      return res.status(404).json({ message: "Menu item not found" });
     }
+    res.json(menuItem);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
 });
 
 /**
@@ -143,32 +134,30 @@ router.get("/:id", async (req, res) => {
  *       500:
  *         description: Server error
  */
-
-// Create a new menu item
 router.post("/", async (req, res) => {
-    const { name, description, category, price, photo, dietaryFlags, Availability } = req.body;
-    const menuItem = new Menu({
-        name,
-        description,
-        category,
-        price,
-        photo,
-        dietaryFlags,
-        Availability
-    });
-    try {
-        const newMenuItem = await menuItem.save();
-        res.status(201).json(newMenuItem);
-    } catch (err) {
-        res.status(400).json({ message: err.message });
-    }
+  const { name, description, category, price, photo, dietaryFlags, Availability } = req.body;
+  const menuItem = new Menu({
+    name,
+    description,
+    category,
+    price,
+    photo,
+    dietaryFlags,
+    Availability,
+  });
+  try {
+    const newMenuItem = await menuItem.save();
+    res.status(201).json(newMenuItem);
+  } catch (err) {
+    res.status(400).json({ message: err.message });
+  }
 });
 
 /**
  * @swagger
  * /menu/{id}:
  *   put:
- *     summary: Update a menu item by ID
+ *     summary: Replace a menu item by ID
  *     tags: [Menu]
  *     parameters:
  *       - in: path
@@ -191,23 +180,21 @@ router.post("/", async (req, res) => {
  *               $ref: '#/components/schemas/Menu'
  *       404:
  *         description: Menu item not found
+ *       400:
+ *         description: Invalid update data
  *       500:
  *         description: Server error
  */
-
-//replace a menu item
 router.put("/:id", async (req, res) => {
-
-    try {
-        const updateMenuItem = await Menu.findByIdAndUpdate(req.params.id, req.body, {new: true});
-
-        if (!updateMenuItem) {
-            return res.status(404).json({ message: 'Menu item not found' });
-        }
-        res.json(updateMenuItem);
-    } catch (err) {
-        res.status(400).json({ message: `Error updating menu item: ${err.message}` });
-    } 
+  try {
+    const updateMenuItem = await Menu.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    if (!updateMenuItem) {
+      return res.status(404).json({ message: "Menu item not found" });
+    }
+    res.json(updateMenuItem);
+  } catch (err) {
+    res.status(400).json({ message: `Error updating menu item: ${err.message}` });
+  }
 });
 
 /**
@@ -237,28 +224,28 @@ router.put("/:id", async (req, res) => {
  *               $ref: '#/components/schemas/Menu'
  *       404:
  *         description: Menu item not found
+ *       400:
+ *         description: Invalid update data
  *       500:
  *         description: Server error
  */
-
-//partial update a menu item
-router.patch("/:id", async (req, res) => {
-    try {
-        const updateMenuFields = await Menu.findByIdAndUpdate(req.params.id, req.body, { new: true });
-        if (!updateMenuFields) {
-            return res.status(404).json({ message: 'Menu item not found' });
-        }
-        res.json(updateMenuFields);
-    } catch (err) {
-        res.status(400).json({ message: err.message });
+router.patch("/:id", auth, authorizeRole("staff", "manager"), async (req, res) => {
+  try {
+    const updateMenuFields = await Menu.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    if (!updateMenuFields) {
+      return res.status(404).json({ message: "Menu item not found" });
     }
+    res.json(updateMenuFields);
+  } catch (err) {
+    res.status(400).json({ message: err.message });
+  }
 });
 
 /**
  * @swagger
  * /menu/{id}:
  *   delete:
- *     summary: Delete a menu item
+ *     summary: Delete a menu item by ID
  *     tags: [Menu]
  *     parameters:
  *       - in: path
@@ -274,18 +261,16 @@ router.patch("/:id", async (req, res) => {
  *       500:
  *         description: Server error
  */
-
-//delete a menu item
-router.delete("/:id", async (req, res) => {
-    try {
-        const deletedMenuItem = await Menu.findByIdAndDelete(req.params.id);
-        if (!deletedMenuItem) {
-            return res.status(404).json({ message: 'Menu item not found' });
-        }
-        res.json({ message: 'Deleted menu item' });
-    } catch (err) {
-        res.status(500).json({ message: err.message });
+router.delete("/:id", auth, authorizeRole("manager"), async (req, res) => {
+  try {
+    const deletedMenuItem = await Menu.findByIdAndDelete(req.params.id);
+    if (!deletedMenuItem) {
+      return res.status(404).json({ message: "Menu item not found" });
     }
+    res.json({ message: "Deleted menu item" });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
 });
 
 module.exports = router;

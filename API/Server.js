@@ -1,14 +1,16 @@
 const swaggerDocs = require("./Swagger");
-
+const swaggerUI = require("swagger-ui-express");
 const express = require("express");
+const helmet = require("helmet");
 const cors = require("cors")
 const mongoose = require("mongoose");
 const env = require('dotenv').config();
 
-app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerDocument));
-
 const app = express();
 
+app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerDocs));
+
+app.use(helmet());
 app.use(cors());
 
 app.use(express.json());
@@ -42,9 +44,13 @@ app.listen(PORT, () => {console.log(`Server running on port ${PORT}`)});
 
 // Improved error handler (shows stack in non-production)
 app.use((err, req, res, next) => {
+
   console.error(err.stack);
+  
   const status = err.status || 500;
+
   const payload = { message: err.message || 'Something broke!' };
+
   if (process.env.NODE_ENV !== 'production') payload.stack = err.stack;
   res.status(status).json(payload);
 });

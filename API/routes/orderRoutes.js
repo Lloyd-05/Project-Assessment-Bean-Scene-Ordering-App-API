@@ -54,6 +54,7 @@
 
 const router = require("express").Router();
 const Order = require("../models/Order");
+const auth = require("../middleware/auth");
 
 /**
  * @swagger
@@ -180,7 +181,7 @@ router.get("/:id", async (req, res) => {
  *       500:
  *         description: Server error
  */
-router.post("/", async (req, res) => {
+router.post("/", auth, async (req, res) => {
   const { tableCode, dateTime, status, menuItems } = req.body;
   const order = new Order({ tableCode, dateTime, status, menuItems });
 
