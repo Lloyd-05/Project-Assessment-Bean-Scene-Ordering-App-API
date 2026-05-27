@@ -15,9 +15,9 @@ POST {{baseURL}}/api/users
 Content-Type: application/json
 
 {
-    "username": "staff4",
-    "password": "password999",
-    "role": "staff"
+    "username": "manager2",
+    "password": "password111",
+    "role": "manager"
 }
 
 ###
@@ -49,13 +49,21 @@ POST http://localhost:5000/api/auth/login
 Content-Type: application/json
 
 {
-    "username": "staff4",
-    "password": "password999"
+    "username": "manager2",
+    "password": "password111"
+}
+
+POST http://localhost:5000/api/auth/logout
+Content-Type: application/json
+
+{
+    "username": "manager2",
+    "password": "password111"
 }
 
 ###
 GET http://localhost:5000/api/menu/
 
 ###
-DELETE http://localhost:5000/api/menu/6a05640f2e567066acfea409
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMDU2NDBmMmU1NjcwNjZhY2ZlYTQwNiIsInJvbGUiOiJtYW5hZ2VyIiwiaWF0IjoxNzc4NzM4NDM5LCJleHAiOjE3Nzg3NDU2Mzl9.vklqEUbWuUXAo1R_5vQ0Q3AMjV89tEa9_8KkGGstRDs
+DELETE http://localhost:5000/api/menu/6a12f38b42f0dfb5ceae6394
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMTZkMmIwMzIyNGNmOWU4MzRiYjllMiIsInJvbGUiOiJtYW5hZ2VyIiwiaWF0IjoxNzc5ODgwNzExLCJleHAiOjE3Nzk4ODc5MTF9.CRnjsT55YT3UFWpQ0WvDEPGON-kRvGu9gsMk2BMA75c
