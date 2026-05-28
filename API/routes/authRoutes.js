@@ -4,7 +4,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require("jsonwebtoken");
 
 // POST /api/auth/login
-router.post('/login', async (req, res) => {
+router.post("/login", async (req, res) => {
   const { username, password } = req.body;
 
   try {
@@ -47,3 +47,23 @@ router.post('/login', async (req, res) => {
     res.status(500).json({ message: 'Server error' });
   }
 });
+
+
+// router.get("/signinstatus", async(req, res) => {
+//   const 
+// })
+
+router.post("/logout", async (req, res) => {
+    const { username, password } = req.body;
+    
+    try {
+    const user = await User.findOne({ username });
+    res.json({message: "Successfully logged out"})
+    }
+    catch(err){
+          res.status(500).json({ message: "Logout failled" });
+
+    }
+})
+
+module.exports = router;

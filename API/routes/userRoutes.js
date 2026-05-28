@@ -179,7 +179,9 @@ router.put("/:id", async (req, res) => {
     const updatedUser = await User.findByIdAndUpdate(
       req.params.id,
       { username, password, role },
-      { new: true }
+      // { new: true }
+      {returnDocument: "after"}
+
     );
     if (!updatedUser) {
       return res.status(404).json({ message: "User not found" });

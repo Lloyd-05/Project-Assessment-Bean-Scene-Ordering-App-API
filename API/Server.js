@@ -26,18 +26,17 @@ swaggerDocs(app);
 
 const menuRoutes = require("./routes/menuRoutes");
 const orderRoutes = require("./routes/orderRoutes");
-const userRoutes = require("./routes/userRoute");
-const tableRoutes = require("./routes/tableRoute");
-
-mongoose
-  .connect(process.env.MONGO_URI)
-  .then(() => console.log("🍃 MongoDB Connected Successfully"))
-  .catch((err) => console.log("❌ DB Connection Error:", err));
+const userRoutes = require("./routes/userRoutes");
+const tableRoutes = require("./routes/tableRoutes");
+const authRoutes = require("./routes/authRoutes");
+const categoryRoutes = require("./routes/categoryRoutes");
 
 app.use("/api/menu", menuRoutes);
-app.use("/api/orders", orderRoutes);
-app.use("/api/tables", tableRoutes);
-app.use("/api/users", userRoutes);
+app.use("/api/order", orderRoutes);
+app.use("/api/table", tableRoutes);
+app.use("/api/user", userRoutes);
+app.use("/api/auth", authRoutes);
+app.use("/api/category", categoryRoutes);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {console.log(`Server running on port ${PORT}`)});
@@ -54,3 +53,8 @@ app.use((err, req, res, next) => {
   if (process.env.NODE_ENV !== 'production') payload.stack = err.stack;
   res.status(status).json(payload);
 });
+
+mongoose
+  .connect(process.env.MONGO_URI)
+  .then(() => console.log("🍃 MongoDB Connected Successfully"))
+  .catch((err) => console.log("❌ DB Connection Error:", err));

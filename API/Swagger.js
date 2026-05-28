@@ -1,5 +1,6 @@
 const swaggerJsDoc = require("swagger-jsdoc");
 const swaggerUi = require("swagger-ui-express");
+const Category = require("./models/Category");
 
 const options = {
     definition: {
@@ -10,11 +11,11 @@ const options = {
             description: "API documentation for the restaurant menu system",
         },
         servers: [
-                {
-                    url: `http://localhost:${process.env.PORT || 5000}/api`,
-                    description: "Local development server (API base path)",
-                },
-            ],
+            {
+                url: `http://localhost:${process.env.PORT || 5000}/api`,
+                description: "Local development server (API base path)",
+            },
+        ],
         components: {
             schemas: {
                 Menu: {
@@ -70,6 +71,13 @@ const options = {
                         number: { type: "number" },
                         capacity: { type: "number" },
                         status: { type: "string" },
+                    },
+                },
+                Category: {
+                    type: "object",
+                    properties: {
+                    _id: { type: "string" },
+                    name: { type: "string" },
                     },
                 },
             },
