@@ -1,7 +1,6 @@
 @baseURL = http://localhost:5000
 
 ###
-
 GET {{baseURL}}/api/users
 
 ###
@@ -45,15 +44,7 @@ DELETE {{baseURL}}/api/users/6a0d921f1f7c246a8b66025c
 
 ###
 
-POST http://localhost:5000/api/auth/login
-Content-Type: application/json
-
-{
-    "username": "manager2",
-    "password": "password111"
-}
-
-POST http://localhost:5000/api/auth/logout
+POST {{baseURL}}/api/auth/login
 Content-Type: application/json
 
 {
@@ -62,8 +53,22 @@ Content-Type: application/json
 }
 
 ###
-GET http://localhost:5000/api/menu/
+
+GET  {{baseURL}}/api/auth
 
 ###
-DELETE http://localhost:5000/api/menu/6a12f38b42f0dfb5ceae6394
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMTZkMmIwMzIyNGNmOWU4MzRiYjllMiIsInJvbGUiOiJtYW5hZ2VyIiwiaWF0IjoxNzc5ODgwNzExLCJleHAiOjE3Nzk4ODc5MTF9.CRnjsT55YT3UFWpQ0WvDEPGON-kRvGu9gsMk2BMA75c
+POST {{baseURL}}/api/auth/logout
+Content-Type: application/json
+
+{
+    "username": "manager2",
+    "password": "password111"
+}
+
+###
+GET {{baseURL}}/api/menu/
+
+### 
+### "No quotations from bearer to end of token string.""
+DELETE {{baseURL}}/api/menu/6a1809e956b21a271e4b9383
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMTZkMmIwMzIyNGNmOWU4MzRiYjllMiIsInJvbGUiOiJtYW5hZ2VyIiwiaWF0IjoxNzc5OTYyMzc2LCJleHAiOjE3Nzk5Njk1NzZ9.K_qytN6GN00zaDm_augnpUcn810ONMIC95gTR5GHkg0

@@ -48,6 +48,11 @@ router.post("/login", async (req, res) => {
   }
 });
 
+
+// router.get("/signinstatus", async(req, res) => {
+//   const 
+// })
+
 router.post("/logout", async (req, res) => {
     const { username, password } = req.body;
     
