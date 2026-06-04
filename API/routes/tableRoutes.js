@@ -24,21 +24,19 @@
  *         tableCode:
  *           type: string
  *           description: Unique table code (e.g., T1, T2)
- *         status:
- *           type: string
- *           description: Current table status (available, occupied, reserved)
  *       example:
- *         area: "indoor"
+ *         area: "main"
  *         tableCode: "T1"
- *         status: "available"
  */
 
 const router = require("express").Router();
 const Table = require("../models/Table");
+const auth = require("../middleware/auth");
+const authorizeRole = require("../middleware/roleAuth");
 
 /**
  * @swagger
- * /tables:
+ * /table:
  *   get:
  *     summary: Get all tables
  *     tags: [Table]
@@ -54,7 +52,7 @@ const Table = require("../models/Table");
  *       500:
  *         description: Server error
  */
-router.get("/", async (req, res) => {
+router.get("/", auth, authorizeRole("staff", "manager"), async (req, res) => {
   try {
     const tables = await Table.find();
     res.json(tables);
@@ -65,7 +63,7 @@ router.get("/", async (req, res) => {
 
 /**
  * @swagger
- * /tables/search:
+ * /table/search:
  *   get:
  *     summary: Search tables by table code
  *     tags: [Table]
@@ -88,7 +86,7 @@ router.get("/", async (req, res) => {
  *       500:
  *         description: Server error
  */
-router.get("/search", async (req, res) => {
+router.get("/search", auth, authorizeRole("staff", "manager"), async (req, res) => {
   try {
     const ques = req.query.ques;
     const tables = await Table.find({
@@ -102,7 +100,7 @@ router.get("/search", async (req, res) => {
 
 /**
  * @swagger
- * /tables/{id}:
+ * /table/{id}:
  *   get:
  *     summary: Get a specific table by ID
  *     tags: [Table]
@@ -124,7 +122,7 @@ router.get("/search", async (req, res) => {
  *       500:
  *         description: Server error
  */
-router.get("/:id", async (req, res) => {
+router.get("/:id", auth, authorizeRole("staff", "manager"), async (req, res) => {
   try {
     const table = await Table.findById(req.params.id);
     if (!table) {
@@ -138,7 +136,7 @@ router.get("/:id", async (req, res) => {
 
 /**
  * @swagger
- * /tables:
+ * /table:
  *   post:
  *     summary: Create a new table
  *     tags: [Table]
@@ -160,7 +158,7 @@ router.get("/:id", async (req, res) => {
  *       500:
  *         description: Server error
  */
-router.post("/", async (req, res) => {
+router.post("/", auth, authorizeRole("manager"), async (req, res) => {
   const { area, tableCode } = req.body;
   try {
     const newTable = new Table({ area, tableCode });
@@ -173,7 +171,7 @@ router.post("/", async (req, res) => {
 
 /**
  * @swagger
- * /tables/{id}:
+ * /table/{id}:
  *   put:
  *     summary: Update a specific table by ID
  *     tags: [Table]
@@ -203,7 +201,7 @@ router.post("/", async (req, res) => {
  *       500:
  *         description: Server error
  */
-router.put("/:id", async (req, res) => {
+router.put("/:id", auth, authorizeRole("manager"), async (req, res) => {
   const { area, tableCode } = req.body;
   try {
     const updatedTable = await Table.findByIdAndUpdate(
@@ -222,7 +220,7 @@ router.put("/:id", async (req, res) => {
 
 /**
  * @swagger
- * /tables/{id}:
+ * /table/{id}:
  *   delete:
  *     summary: Delete a specific table by ID
  *     tags: [Table]
@@ -240,7 +238,7 @@ router.put("/:id", async (req, res) => {
  *       500:
  *         description: Server error
  */
-router.delete("/:id", async (req, res) => {
+router.delete("/:id", auth, authorizeRole("manager"), async (req, res) => {
   try {
     const deletedTable = await Table.findByIdAndDelete(req.params.id);
     if (!deletedTable) {

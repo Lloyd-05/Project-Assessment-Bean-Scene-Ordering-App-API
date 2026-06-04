@@ -28,7 +28,7 @@ const authorizeRole = require("../middleware/roleAuth");
  *       500:
  *         description: Server error
  */
-router.get("/", async (req, res) => {
+router.get("/", auth, authorizeRole("staff", "manager"), async (req, res) => {
   try {
     const menuItems = await Menu.find();
     res.json(menuItems);
@@ -62,7 +62,7 @@ router.get("/", async (req, res) => {
  *       500:
  *         description: Server error
  */
-router.get("/search", async (req, res) => {
+router.get("/search", auth, authorizeRole("staff", "manager"), async (req, res) => {
   try {
     const ques = req.query.ques;
     const items = await Menu.find({
@@ -98,7 +98,7 @@ router.get("/search", async (req, res) => {
  *       500:
  *         description: Server error
  */
-router.get("/:id", async (req, res) => {
+router.get("/:id", auth, authorizeRole("staff", "manager"), async (req, res) => {
   try {
     const menuItem = await Menu.findById(req.params.id);
     if (!menuItem) {
@@ -134,7 +134,7 @@ router.get("/:id", async (req, res) => {
  *       500:
  *         description: Server error
  */
-router.post("/", async (req, res) => {
+router.post("/", auth, authorizeRole("manager"),async (req, res) => {
   const { name, description, category, price, photo, dietaryFlags, Availability } = req.body;
   const menuItem = new Menu({
     name,
@@ -185,7 +185,7 @@ router.post("/", async (req, res) => {
  *       500:
  *         description: Server error
  */
-router.put("/:id", async (req, res) => {
+router.put("/:id", auth, authorizeRole("manager"), async (req, res) => {
   try {
     const updateMenuItem = await Menu.findByIdAndUpdate(req.params.id, req.body, { new: true });
     if (!updateMenuItem) {

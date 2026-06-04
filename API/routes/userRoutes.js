@@ -7,10 +7,12 @@
 
 const router = require("express").Router();
 const User = require("../models/User");
+const auth = require("../middleware/auth");
+const authorizeRole = require("../middleware/roleAuth");
 
 /**
  * @swagger
- * /users:
+ * /user:
  *   get:
  *     summary: Get all users
  *     tags: [User]
@@ -26,7 +28,7 @@ const User = require("../models/User");
  *       500:
  *         description: Server error
  */
-router.get("/", async (req, res) => {
+router.get("/", auth, authorizeRole("staff", "manager"),async (req, res) => {
   try {
     const users = await User.find();
     res.json(users);
@@ -37,7 +39,7 @@ router.get("/", async (req, res) => {
 
 /**
  * @swagger
- * /users/search:
+ * /user/search:
  *   get:
  *     summary: Search users by username
  *     tags: [User]
@@ -60,7 +62,7 @@ router.get("/", async (req, res) => {
  *       500:
  *         description: Server error
  */
-router.get("/search", async (req, res) => {
+router.get("/search", auth, authorizeRole("staff", "manager"), async (req, res) => {
   try {
     const ques = req.query.ques;
     const users = await User.find({
@@ -74,7 +76,7 @@ router.get("/search", async (req, res) => {
 
 /**
  * @swagger
- * /users/{id}:
+ * /user/{id}:
  *   get:
  *     summary: Get a user by ID
  *     tags: [User]
@@ -97,7 +99,7 @@ router.get("/search", async (req, res) => {
  *       500:
  *         description: Server error
  */
-router.get("/:id", async (req, res) => {
+router.get("/:id", auth, authorizeRole("staff", "manager"), async (req, res) => {
   try {
     const user = await User.findById(req.params.id);
     if (!user) {
@@ -111,7 +113,7 @@ router.get("/:id", async (req, res) => {
 
 /**
  * @swagger
- * /users:
+ * /user:
  *   post:
  *     summary: Create a new user
  *     tags: [User]
@@ -131,7 +133,7 @@ router.get("/:id", async (req, res) => {
  *       400:
  *         description: Bad request
  */
-router.post("/", async (req, res) => {
+router.post("/", auth, authorizeRole("manager"), async (req, res) => {
   const { username, password, role } = req.body;
   const user = new User({ username, password, role });
   try {
@@ -144,7 +146,7 @@ router.post("/", async (req, res) => {
 
 /**
  * @swagger
- * /users/{id}:
+ * /user/{id}:
  *   put:
  *     summary: Replace a user
  *     tags: [User]
@@ -173,7 +175,7 @@ router.post("/", async (req, res) => {
  *       404:
  *         description: User not found
  */
-router.put("/:id", async (req, res) => {
+router.put("/:id", auth, authorizeRole( "manager"), async (req, res) => {
   const { username, password, role } = req.body;
   try {
     const updatedUser = await User.findByIdAndUpdate(
@@ -194,7 +196,7 @@ router.put("/:id", async (req, res) => {
 
 /**
  * @swagger
- * /users/{id}:
+ * /user/{id}:
  *   patch:
  *     summary: Partially update a user
  *     tags: [User]
@@ -223,7 +225,7 @@ router.put("/:id", async (req, res) => {
  *       404:
  *         description: User not found
  */
-router.patch("/:id", async (req, res) => {
+router.patch("/:id", auth, authorizeRole("manager"), async (req, res) => {
   try {
     const updatedUser = await User.findByIdAndUpdate(req.params.id, req.body, {
       new: true,
@@ -239,7 +241,7 @@ router.patch("/:id", async (req, res) => {
 
 /**
  * @swagger
- * /users/{id}:
+ * /user/{id}:
  *   delete:
  *     summary: Delete a user
  *     tags: [User]
@@ -256,7 +258,7 @@ router.patch("/:id", async (req, res) => {
  *       404:
  *         description: User not found
  */
-router.delete("/:id", async (req, res) => {
+router.delete("/:id", auth, authorizeRole("manager"), async (req, res) => {
   try {
     const deletedUser = await User.findByIdAndDelete(req.params.id);
     if (!deletedUser) {

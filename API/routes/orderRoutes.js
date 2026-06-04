@@ -35,7 +35,7 @@
  *           items:
  *             type: object
  *             properties:
- *               menuItem:
+ *               menuItemId:
  *                 type: string
  *                 description: Menu item ID
  *               quantity:
@@ -46,19 +46,20 @@
  *         dateTime: "2024-06-01T12:00:00Z"
  *         status: "pending"
  *         menuItems:
- *           - menuItem: "60c72b2f9b1d8e5a5c8f9a1"
+ *           - menuItemId: "60c72b2f9b1d8e5a5c8f9a1"
  *             quantity: 2
- *           - menuItem: "60c72b2f9b1d8e5a5c8f9a2"
+ *           - menuItemId: "60c72b2f9b1d8e5a5c8f9a2"
  *             quantity: 1
  */
 
 const router = require("express").Router();
 const Order = require("../models/Order");
 const auth = require("../middleware/auth");
+const authorizeRole = require("../middleware/roleAuth");
 
 /**
  * @swagger
- * /orders:
+ * /order:
  *   get:
  *     summary: Get all orders
  *     tags: [Order]
@@ -74,7 +75,7 @@ const auth = require("../middleware/auth");
  *       500:
  *         description: Server error
  */
-router.get("/", async (req, res) => {
+router.get("/", auth, authorizeRole("staff", "manager"),async (req, res) => {
   try {
     const orders = await Order.find();
     res.json(orders);
@@ -85,7 +86,7 @@ router.get("/", async (req, res) => {
 
 /**
  * @swagger
- * /orders/search:
+ * /order/search:
  *   get:
  *     summary: Search orders by table code
  *     tags: [Order]
@@ -108,7 +109,7 @@ router.get("/", async (req, res) => {
  *       500:
  *         description: Server error
  */
-router.get("/search", async (req, res) => {
+router.get("/search", auth, authorizeRole("staff", "manager"), async (req, res) => {
   try {
     const ques = req.query.ques;
     const orders = await Order.find({
@@ -122,7 +123,7 @@ router.get("/search", async (req, res) => {
 
 /**
  * @swagger
- * /orders/{id}:
+ * /order/{id}:
  *   get:
  *     summary: Get a specific order by ID
  *     tags: [Order]
@@ -145,7 +146,7 @@ router.get("/search", async (req, res) => {
  *       500:
  *         description: Server error
  */
-router.get("/:id", async (req, res) => {
+router.get("/:id", auth, authorizeRole("staff", "manager"), async (req, res) => {
   try {
     const order = await Order.findById(req.params.id);
     if (!order) {
@@ -159,7 +160,7 @@ router.get("/:id", async (req, res) => {
 
 /**
  * @swagger
- * /orders:
+ * /order:
  *   post:
  *     summary: Create a new order
  *     tags: [Order]
@@ -181,7 +182,7 @@ router.get("/:id", async (req, res) => {
  *       500:
  *         description: Server error
  */
-router.post("/", auth, async (req, res) => {
+router.post("/", auth, authorizeRole("staff", "manager"), async (req, res) => {
   const { tableCode, dateTime, status, menuItems } = req.body;
   const order = new Order({ tableCode, dateTime, status, menuItems });
 
@@ -195,7 +196,7 @@ router.post("/", auth, async (req, res) => {
 
 /**
  * @swagger
- * /orders/{id}:
+ * /order/{id}:
  *   put:
  *     summary: Replace an existing order
  *     tags: [Order]
@@ -222,7 +223,7 @@ router.post("/", auth, async (req, res) => {
  *       500:
  *         description: Server error
  */
-router.put("/:id", async (req, res) => {
+router.put("/:id", auth, authorizeRole("staff", "manager"), async (req, res) => {
   try {
     const updateOrder = await Order.findByIdAndUpdate(
       req.params.id,
@@ -241,7 +242,7 @@ router.put("/:id", async (req, res) => {
 
 /**
  * @swagger
- * /orders/{id}:
+ * /order/{id}:
  *   patch:
  *     summary: Partially update an order
  *     tags: [Order]
@@ -268,7 +269,7 @@ router.put("/:id", async (req, res) => {
  *       500:
  *         description: Server error
  */
-router.patch("/:id", async (req, res) => {
+router.patch("/:id", auth, authorizeRole("staff", "manager"), async (req, res) => {
   try {
     const updateOrder = await Order.findByIdAndUpdate(
       req.params.id,
@@ -287,7 +288,7 @@ router.patch("/:id", async (req, res) => {
 
 /**
  * @swagger
- * /orders/{id}:
+ * /order/{id}:
  *   delete:
  *     summary: Delete an order by ID
  *     tags: [Order]
@@ -306,7 +307,7 @@ router.patch("/:id", async (req, res) => {
  *       500:
  *         description: Server error
  */
-router.delete("/:id", async (req, res) => {
+router.delete("/:id", auth, authorizeRole("staff", "manager"), async (req, res) => {
   try {
     const deletedOrder = await Order.findByIdAndDelete(req.params.id);
     if (!deletedOrder) {
