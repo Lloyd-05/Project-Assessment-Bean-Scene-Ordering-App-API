@@ -1,8 +1,17 @@
 @baseURL = http://localhost:5000
 
+### login
+POST {{baseURL}}/api/auth/login 
+Content-Type: application/json
+
+{
+    "username": "manager2",
+    "password": "newpassword111"
+}
+
 ###
 GET {{baseURL}}/api/user
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMjExYmRmYzg3MDY2ZTNlMzgxNGNmZSIsInJvbGUiOiJtYW5hZ2VyIiwiaWF0IjoxNzgwNTczNDY0LCJleHAiOjE3ODA1ODA2NjR9.xcvvRhEFK5CVa_YKjzE1e9we_amJjOmAjbNUD-aPfvI
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMjExYmRmYzg3MDY2ZTNlMzgxNGNmZSIsInJvbGUiOiJtYW5hZ2VyIiwiaWF0IjoxNzgwNjE2MjIyLCJleHAiOjE3ODA2MjM0MjJ9.G93xXAg85HoFdQsuwk9BAU8txBnPww5P-qEFb05ew2o
 
 ###
 GET {{baseURL}}/api/user/6a211bc077a2c3ed429ac666
@@ -45,16 +54,6 @@ Content-Type: application/json
 ###
 DELETE {{baseURL}}/api/user/6a0d921f1f7c246a8b66025c
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMjExYmRmYzg3MDY2ZTNlMzgxNGNmZSIsInJvbGUiOiJtYW5hZ2VyIiwiaWF0IjoxNzgwNTY4NDQ1LCJleHAiOjE3ODA1NzU2NDV9.lfpZyKkf1ihVjvikF_i44FLSglbMmHckw5jHEpj2mac
-###
-
-### login
-POST {{baseURL}}/api/auth/login 
-Content-Type: application/json
-
-{
-    "username": "manager2",
-    "password": "newpassword111"
-}
 
 ###
 
