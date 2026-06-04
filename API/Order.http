@@ -1,20 +1,33 @@
 @baseURL=http://localhost:5000
 
-###
-GET {{baseURL}}/api/orders
 
 ###
-GET {{baseURL}}/api/orders/6a0b02bae9bcca1c0c3030f0
-
-###
-GET {{baseURL}}/api/orders/search?ques=O2
-
-###
-POST {{baseURL}}/api/orders
+POST {{baseURL}}/api/auth/login 
 Content-Type: application/json
 
 {
-    "tableCode": "B5",
+    "username": "manager2",
+    "password": "newpassword111"
+}
+
+###
+GET {{baseURL}}/api/order
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMjExYmRmYzg3MDY2ZTNlMzgxNGNmZSIsInJvbGUiOiJtYW5hZ2VyIiwiaWF0IjoxNzgwNTc1NTA4LCJleHAiOjE3ODA1ODI3MDh9.ubZ6g3z4g643qdZp7n6Vvc8qo2BU5YFL2xVl1x6DYb8
+
+###
+GET {{baseURL}}/api/order/6a0b02bae9bcca1c0c3030f0
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMjExYmRmYzg3MDY2ZTNlMzgxNGNmZSIsInJvbGUiOiJtYW5hZ2VyIiwiaWF0IjoxNzgwNTc1NTA4LCJleHAiOjE3ODA1ODI3MDh9.ubZ6g3z4g643qdZp7n6Vvc8qo2BU5YFL2xVl1x6DYb8
+###
+GET {{baseURL}}/api/order/search?ques=O1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMjExYmRmYzg3MDY2ZTNlMzgxNGNmZSIsInJvbGUiOiJtYW5hZ2VyIiwiaWF0IjoxNzgwNTc1NTA4LCJleHAiOjE3ODA1ODI3MDh9.ubZ6g3z4g643qdZp7n6Vvc8qo2BU5YFL2xVl1x6DYb8
+
+###
+POST {{baseURL}}/api/order
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMjExYmRmYzg3MDY2ZTNlMzgxNGNmZSIsInJvbGUiOiJtYW5hZ2VyIiwiaWF0IjoxNzgwNTc1NTA4LCJleHAiOjE3ODA1ODI3MDh9.ubZ6g3z4g643qdZp7n6Vvc8qo2BU5YFL2xVl1x6DYb8
+Content-Type: application/json
+
+{
+    "tableCode": "O1",
     "dateTime": "2024-05-15T12:30:00Z",
     "status": "in-progress",
     "menuItems": [
@@ -30,8 +43,8 @@ Content-Type: application/json
 }
 
 ###
-
-PUT {{baseURL}}/api/orders/6a0b02bae9bcca1c0c3030f0
+PUT {{baseURL}}/api/order/6a216dcf958f5a558fa5a6ec
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMjExYmRmYzg3MDY2ZTNlMzgxNGNmZSIsInJvbGUiOiJtYW5hZ2VyIiwiaWF0IjoxNzgwNTc1NTA4LCJleHAiOjE3ODA1ODI3MDh9.ubZ6g3z4g643qdZp7n6Vvc8qo2BU5YFL2xVl1x6DYb8
 Content-Type: application/json
 
 {
@@ -51,7 +64,8 @@ Content-Type: application/json
 }
 
 ###
-PATCH {{baseURL}}/api/orders/6a0b0792a35585dffb906469
+PATCH {{baseURL}}/api/order/6a216dcf958f5a558fa5a6ec
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMjExYmRmYzg3MDY2ZTNlMzgxNGNmZSIsInJvbGUiOiJtYW5hZ2VyIiwiaWF0IjoxNzgwNTc1NTA4LCJleHAiOjE3ODA1ODI3MDh9.ubZ6g3z4g643qdZp7n6Vvc8qo2BU5YFL2xVl1x6DYb8
 Content-Type: application/json
 
 {
@@ -59,4 +73,5 @@ Content-Type: application/json
 }
 
 ###
-DELETE {{baseURL}}/api/orders/6a0b0739a35585dffb906468
+DELETE {{baseURL}}/api/order/6a216dcf958f5a558fa5a6ec
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMjExYmRmYzg3MDY2ZTNlMzgxNGNmZSIsInJvbGUiOiJtYW5hZ2VyIiwiaWF0IjoxNzgwNTc1NTA4LCJleHAiOjE3ODA1ODI3MDh9.ubZ6g3z4g643qdZp7n6Vvc8qo2BU5YFL2xVl1x6DYb8

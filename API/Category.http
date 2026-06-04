@@ -1,4 +1,45 @@
 @baseURL=http://localhost:5000
 
 ###
+POST {{baseURL}}/api/auth/login 
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMjExYmRmYzg3MDY2ZTNlMzgxNGNmZSIsInJvbGUiOiJtYW5hZ2VyIiwiaWF0IjoxNzgwNTc2OTc1LCJleHAiOjE3ODA1ODQxNzV9.hk8fZ7730a-mNVJfkmMtvFWzcLydagJZ3Pu6HAZ5tko
+Content-Type: application/json
+
+{
+    "username": "manager2",
+    "password": "newpassword111"
+}
+
+###
 GET {{baseURL}}/api/category
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMjExYmRmYzg3MDY2ZTNlMzgxNGNmZSIsInJvbGUiOiJtYW5hZ2VyIiwiaWF0IjoxNzgwNTc2OTc1LCJleHAiOjE3ODA1ODQxNzV9.hk8fZ7730a-mNVJfkmMtvFWzcLydagJZ3Pu6HAZ5tko
+
+###
+GET {{baseURL}}/api/category/search?ques=drink
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMjExYmRmYzg3MDY2ZTNlMzgxNGNmZSIsInJvbGUiOiJtYW5hZ2VyIiwiaWF0IjoxNzgwNTc2OTc1LCJleHAiOjE3ODA1ODQxNzV9.hk8fZ7730a-mNVJfkmMtvFWzcLydagJZ3Pu6HAZ5tko
+
+###
+GET {{baseURL}}/api/category/6a12f1c8398d135b84143a1d
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMjExYmRmYzg3MDY2ZTNlMzgxNGNmZSIsInJvbGUiOiJtYW5hZ2VyIiwiaWF0IjoxNzgwNTc1ODgwLCJleHAiOjE3ODA1ODMwODB9.r9EOM_6I3bqTI1j_z4INhveE1bhnG8098PGcJ669_Xk
+
+###
+POST {{baseURL}}/api/category
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMjExYmRmYzg3MDY2ZTNlMzgxNGNmZSIsInJvbGUiOiJtYW5hZ2VyIiwiaWF0IjoxNzgwNTc1ODgwLCJleHAiOjE3ODA1ODMwODB9.r9EOM_6I3bqTI1j_z4INhveE1bhnG8098PGcJ669_Xk
+Content-Type: application/json
+
+{
+    "name": "Loose Changes"
+}
+
+###
+PUT {{baseURL}}/api/category/6a21738267ae271b2a0b54bd
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMjExYmRmYzg3MDY2ZTNlMzgxNGNmZSIsInJvbGUiOiJtYW5hZ2VyIiwiaWF0IjoxNzgwNTc1ODgwLCJleHAiOjE3ODA1ODMwODB9.r9EOM_6I3bqTI1j_z4INhveE1bhnG8098PGcJ669_Xk
+Content-Type: application/json
+
+{
+    "name": "Penny Pinchers"
+}
+
+###
+DELETE {{baseURL}}/api/category/6a21738267ae271b2a0b54bd
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMjExYmRmYzg3MDY2ZTNlMzgxNGNmZSIsInJvbGUiOiJtYW5hZ2VyIiwiaWF0IjoxNzgwNTc1ODgwLCJleHAiOjE3ODA1ODMwODB9.r9EOM_6I3bqTI1j_z4INhveE1bhnG8098PGcJ669_Xk
