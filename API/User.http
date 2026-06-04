@@ -1,16 +1,26 @@
 @baseURL = http://localhost:5000
 
 ###
-GET {{baseURL}}/api/users
+GET {{baseURL}}/api/user
 
 ###
-GET {{baseURL}}/api/users/6a0d921f1f7c246a8b66025b
+GET {{baseURL}}/api/user/6a2114fb4a39fb0b8e314cb7
 
 ###
-GET {{baseURL}}/api/users/search?ques=manager12
+GET {{baseURL}}/api/user/search?ques=manager2
 
 ###
-POST {{baseURL}}/api/users
+POST {{baseURL}}/api/user
+Content-Type: application/json
+
+{
+    "username": "manager2",
+    "password": "newpassword111",
+    "role": "manager"
+}
+
+###
+PUT {{baseURL}}/api/user/6a0d921f1f7c246a8b66025c
 Content-Type: application/json
 
 {
@@ -20,36 +30,26 @@ Content-Type: application/json
 }
 
 ###
-PUT {{baseURL}}/api/users/6a0d921f1f7c246a8b66025c
+
+PATCH {{baseURL}}/api/user/6a21154ebb5286100e9b43f1
+Content-Type: application/json
+
+{
+    "password": "newpassword123"
+}
+
+###
+DELETE {{baseURL}}/api/user/6a0d921f1f7c246a8b66025c
+
+###
+
+### login
+POST {{baseURL}}/api/auth/login 
 Content-Type: application/json
 
 {
     "username": "manager2",
-    "password": "password111",
-    "role": "manager"
-}
-
-###
-
-PATCH {{baseURL}}/api/users/6a0d973d8cd419fabff51f51
-Content-Type: application/json
-
-{
-    "password": "newpassword123",
-    "role": "staff"
-}
-
-###
-DELETE {{baseURL}}/api/users/6a0d921f1f7c246a8b66025c
-
-###
-
-POST {{baseURL}}/api/auth/login
-Content-Type: application/json
-
-{
-    "username": "manager2",
-    "password": "password111"
+    "password": "newpassword111"
 }
 
 ###
@@ -62,7 +62,7 @@ Content-Type: application/json
 
 {
     "username": "manager2",
-    "password": "password111"
+    "password": "newpassword123"
 }
 
 ###
@@ -70,5 +70,5 @@ GET {{baseURL}}/api/menu/
 
 ### 
 ### "No quotations from bearer to end of token string.""
-DELETE {{baseURL}}/api/menu/6a1809e956b21a271e4b9383
+DELETE {{baseURL}}/api/menu/6a1c0790da31bdb4401c3679
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMTZkMmIwMzIyNGNmOWU4MzRiYjllMiIsInJvbGUiOiJtYW5hZ2VyIiwiaWF0IjoxNzc5OTYyMzc2LCJleHAiOjE3Nzk5Njk1NzZ9.K_qytN6GN00zaDm_augnpUcn810ONMIC95gTR5GHkg0
