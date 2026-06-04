@@ -3,7 +3,10 @@ const jwt = require('jsonwebtoken');
 const auth = (req, res, next) => {
   // 1. Get the token from the header
   // Standard format: "Authorization: Bearer <token>"
-  const authHeader = req.headers['authorization'];
+// const authHeader = req.headers.authorization;
+const authHeader = req.headers.authorization;
+
+  // const authHeader = req.headers['authorization'] || req.get['Authorization']; // Handle case-insensitive header name
 
   // 2. Check if the header exists and starts with "Bearer "
   if (!authHeader || !authHeader.startsWith('Bearer ')) {
