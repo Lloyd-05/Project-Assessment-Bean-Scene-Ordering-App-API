@@ -1,42 +1,53 @@
 @baseURL=http://localhost:5000
 
 ###
-GET {{baseURL}}/api/menu
-
-
-###
-GET {{baseURL}}/api/menu/6a0aedfadb631e57ad5c3327
-
-###
-GET {{baseURL}}/api/menu/search?ques=Steak
-
-###
-POST {{baseURL}}/api/menu
+POST {{baseURL}}/api/auth/login 
 Content-Type: application/json
 
 {
-    "name": "English Breakfast Tea",
-    "description": "A robust blend of black teas from Assam and Ceylon, perfect for a morning pick-me-up.",
-    "category": "drinks",
-    "price": 3.5,
-    "photo": null,
-    "dietaryFlags": [
-        "vegan",
-        "vegetarian",
-        "glutenFree",
-        "nutFree"
-    ],
-    "Availability": true
+    "username": "manager2",
+    "password": "newpassword111"
 }
 
 ###
-PUT {{baseURL}}/api/menu/6a0af065f4d4ac42863330e5
+GET {{baseURL}}/api/menu
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMjExYmRmYzg3MDY2ZTNlMzgxNGNmZSIsInJvbGUiOiJtYW5hZ2VyIiwiaWF0IjoxNzgwNTc2MjkzLCJleHAiOjE3ODA1ODM0OTN9.clG9GjpD8YlXFMdTeVSBKwwPXZRkVtisGYInOLBkPZ8
+
+###
+GET {{baseURL}}/api/menu/6a1c0790da31bdb4401c3678
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMjExYmRmYzg3MDY2ZTNlMzgxNGNmZSIsInJvbGUiOiJtYW5hZ2VyIiwiaWF0IjoxNzgwNTc1ODgwLCJleHAiOjE3ODA1ODMwODB9.r9EOM_6I3bqTI1j_z4INhveE1bhnG8098PGcJ669_Xk
+###
+GET {{baseURL}}/api/menu/search?ques=Steak
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMjExYmRmYzg3MDY2ZTNlMzgxNGNmZSIsInJvbGUiOiJtYW5hZ2VyIiwiaWF0IjoxNzgwNTc1ODgwLCJleHAiOjE3ODA1ODMwODB9.r9EOM_6I3bqTI1j_z4INhveE1bhnG8098PGcJ669_Xk
+###
+POST {{baseURL}}/api/menu
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMjExYmRmYzg3MDY2ZTNlMzgxNGNmZSIsInJvbGUiOiJtYW5hZ2VyIiwiaWF0IjoxNzgwNTc1ODgwLCJleHAiOjE3ODA1ODMwODB9.r9EOM_6I3bqTI1j_z4INhveE1bhnG8098PGcJ669_Xk
+Content-Type: application/json
+
+{
+  "name": "English Breakfast Tea",
+  "description": "A robust blend of black teas from Assam and Ceylon, perfect for a morning pick-me-up.",
+  "category": "6a12f1c8398d135b84143a1c",
+  "price": 3.5,
+  "photo": null,
+  "dietaryFlags": [
+    "vegan",
+    "vegetarian",
+    "glutenFree",
+    "nutFree"
+  ],
+  "Availability": true
+}
+
+###
+PUT {{baseURL}}/api/menu/6a217147f62fec2944456b7a
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMjExYmRmYzg3MDY2ZTNlMzgxNGNmZSIsInJvbGUiOiJtYW5hZ2VyIiwiaWF0IjoxNzgwNTc1ODgwLCJleHAiOjE3ODA1ODMwODB9.r9EOM_6I3bqTI1j_z4INhveE1bhnG8098PGcJ669_Xk
 Content-Type: application/json
 
 {
     "name": "Earl Grey Tea",
     "description": "A robust blend of black teas from Assam and Ceylon, perfect for a morning pick-me-up.",
-    "category": "drinks",
+    "category":"6a12f1c8398d135b84143a1c",
     "price": 3.5,
     "photo": null,
     "dietaryFlags": [
@@ -48,7 +59,8 @@ Content-Type: application/json
 }
 
 ###
-PATCH {{baseURL}}/api/menu/6a0af065f4d4ac42863330e5
+PATCH {{baseURL}}/api/menu/6a217147f62fec2944456b7a
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMjExYmRmYzg3MDY2ZTNlMzgxNGNmZSIsInJvbGUiOiJtYW5hZ2VyIiwiaWF0IjoxNzgwNTc1ODgwLCJleHAiOjE3ODA1ODMwODB9.r9EOM_6I3bqTI1j_z4INhveE1bhnG8098PGcJ669_Xk
 Content-Type: application/json
 
 {
@@ -57,4 +69,5 @@ Content-Type: application/json
 }
 
 ###
-DELETE {{baseURL}}/api/menu/6a0af065f4d4ac42863330e5
+DELETE {{baseURL}}/api/menu/6a217147f62fec2944456b7a
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMjExYmRmYzg3MDY2ZTNlMzgxNGNmZSIsInJvbGUiOiJtYW5hZ2VyIiwiaWF0IjoxNzgwNTc1ODgwLCJleHAiOjE3ODA1ODMwODB9.r9EOM_6I3bqTI1j_z4INhveE1bhnG8098PGcJ669_Xk

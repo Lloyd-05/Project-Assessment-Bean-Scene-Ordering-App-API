@@ -26,10 +26,12 @@
 
 const router = require("express").Router();
 const Category = require("../models/Category");
+const auth = require("../middleware/auth");
+const authorizeRole = require("../middleware/roleAuth");
 
 /**
  * @swagger
- * /categories:
+ * /category:
  *   get:
  *     summary: Get all categories
  *     tags: [Category]
@@ -45,7 +47,7 @@ const Category = require("../models/Category");
  *       500:
  *         description: Server error
  */
-router.get("/", async (req, res) => {
+router.get("/", auth, authorizeRole("staff", "manager"), async (req, res) => {
   try {
     const categories = await Category.find();
     res.json(categories);
@@ -56,7 +58,7 @@ router.get("/", async (req, res) => {
 
 /**
  * @swagger
- * /categories/search:
+ * /category/search:
  *   get:
  *     summary: Search categories by name
  *     tags: [Category]
@@ -79,7 +81,7 @@ router.get("/", async (req, res) => {
  *       500:
  *         description: Server error
  */
-router.get("/search", async (req, res) => {
+router.get("/search",auth, authorizeRole("staff", "manager"), async (req, res) => {
   try {
     const ques = req.query.ques;
     const categories = await Category.find({
@@ -93,7 +95,7 @@ router.get("/search", async (req, res) => {
 
 /**
  * @swagger
- * /categories/{id}:
+ * /category/{id}:
  *   get:
  *     summary: Get a category by ID
  *     tags: [Category]
@@ -115,7 +117,7 @@ router.get("/search", async (req, res) => {
  *       500:
  *         description: Server error
  */
-router.get("/:id", async (req, res) => {
+router.get("/:id",auth, authorizeRole("staff", "manager"), async (req, res) => {
   try {
     const category = await Category.findById(req.params.id);
     if (!category) {
@@ -129,7 +131,7 @@ router.get("/:id", async (req, res) => {
 
 /**
  * @swagger
- * /categories:
+ * /category:
  *   post:
  *     summary: Create a new category
  *     tags: [Category]
@@ -145,7 +147,7 @@ router.get("/:id", async (req, res) => {
  *       400:
  *         description: Invalid category data
  */
-router.post("/", async (req, res) => {
+router.post("/", auth, authorizeRole("manager"), async (req, res) => {
   const { name } = req.body;
   try {
     const newCategory = new Category({ name });
@@ -158,7 +160,7 @@ router.post("/", async (req, res) => {
 
 /**
  * @swagger
- * /categories/{id}:
+ * /category/{id}:
  *   put:
  *     summary: Update a category by ID
  *     tags: [Category]
@@ -182,7 +184,7 @@ router.post("/", async (req, res) => {
  *       400:
  *         description: Invalid category data
  */
-router.put("/:id", async (req, res) => {
+router.put("/:id", auth, authorizeRole("manager"), async (req, res) => {
   const { name } = req.body;
   try {
     const updatedCategory = await Category.findByIdAndUpdate(
@@ -201,7 +203,7 @@ router.put("/:id", async (req, res) => {
 
 /**
  * @swagger
- * /categories/{id}:
+ * /category/{id}:
  *   delete:
  *     summary: Delete a category by ID
  *     tags: [Category]
@@ -219,13 +221,13 @@ router.put("/:id", async (req, res) => {
  *       500:
  *         description: Server error
  */
-router.delete("/:id", async (req, res) => {
+router.delete("/:id", auth, authorizeRole("manager"), async (req, res) => {
   try {
     const deletedCategory = await Category.findByIdAndDelete(req.params.id);
     if (!deletedCategory) {
       return res.status(404).json({ message: "Category not found" });
     }
-    res.json({ message: "Category deleted successfully" });
+    res.json({ message: "Deleted category" });
   } catch (err) {
     res.status(500).json({ message: `Error deleting category: ${err.message}` });
   }

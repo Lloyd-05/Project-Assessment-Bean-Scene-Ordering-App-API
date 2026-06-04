@@ -3,44 +3,94 @@ const User = require('../models/User');
 const bcrypt = require('bcryptjs');
 const jwt = require("jsonwebtoken");
 
+/**
+ * @swagger
+ * tags:
+ *   name: Auth
+ *   description: Authentication endpoints
+ */
+
+/**
+ * @swagger
+ * /auth/login:
+ *   post:
+ *     summary: Login and get a JWT token
+ *     tags: [Auth]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - username
+ *               - password
+ *             properties:
+ *               username:
+ *                 type: string
+ *               password:
+ *                 type: string
+ *     responses:
+ *       200:
+ *         description: Login successful
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                 token:
+ *                   type: string
+ *                 user:
+ *                   type: object
+ *                   properties:
+ *                     id:
+ *                       type: string
+ *                     username:
+ *                       type: string
+ *                     role:
+ *                       type: string
+ *       400:
+ *         description: Missing username or password
+ *       401:
+ *         description: Invalid username or password
+ *       500:
+ *         description: Server error
+ *     security: []
+ */
+
 // POST /api/auth/login
 router.post("/login", async (req, res) => {
   const { username, password } = req.body;
 
+  if (!username || !password) {
+    return res.status(400).json({ message: "Username and password required" });
+  }
+
   try {
-    // 1. Find the user
     const user = await User.findOne({ username: username });
     if (!user) {
       return res.status(401).json({ message: 'Invalid Username or Password' });
     }
 
-    // 2. Compare the typed password with the Hashed password in DB
-    // Bcrypt handles the 'salting' and 'comparing' for us.
     const isMatch = await bcrypt.compare(password, user.password);
-
     if (!isMatch) {
       return res.status(401).json({ message: 'Invalid Username or Password' });
     }
 
-    // 3. Create the Payload (What information do we want to carry?)
-    const payload = {
-      id: user._id,
-      role: user.role
-    };
+    if (!process.env.JWT_SECRET) {
+      return res.status(500).json({ message: "Server misconfiguration" });
+    }
 
-    // 4. Sign the Token
-    // We use a Secret Key from our .env and set an expiration time.
-    const token = jwt.sign(
-      payload,
-      process.env.JWT_SECRET,
-      { expiresIn: '2h' } // Token dies after 2 hours
-    );
+    const payload = { id: user._id, role: user.role };
 
-    // 5. Send the token back to the client (React Native, Postman, etc.)
+    const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '2h' });
+
     res.json({
       message: "Login Successful",
-      token: `Bearer ${token}`, // We add 'Bearer' to follow industry standards
-      user: { username: user.username, role: user.role }
+      token, // <-- raw token only
+      user: { id: user._id, username: user.username, role: user.role }
     });
 
   } catch (err) {
@@ -48,22 +98,20 @@ router.post("/login", async (req, res) => {
   }
 });
 
-
-// router.get("/signinstatus", async(req, res) => {
-//   const 
-// })
-
-router.post("/logout", async (req, res) => {
-    const { username, password } = req.body;
-    
-    try {
-    const user = await User.findOne({ username });
-    res.json({message: "Successfully logged out"})
-    }
-    catch(err){
-          res.status(500).json({ message: "Logout failled" });
-
-    }
-})
+/**
+ * @swagger
+ * /auth/logout:
+ *   post:
+ *     summary: Logout user
+ *     tags: [Auth]
+ *     responses:
+ *       200:
+ *         description: Logout successful
+ *     security: []
+ */
+// POST /api/auth/logout
+router.post("/logout", (req, res) => {
+  res.json({ message: "Logged out" });
+});
 
 module.exports = router;

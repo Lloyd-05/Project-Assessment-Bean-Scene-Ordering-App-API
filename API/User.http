@@ -2,25 +2,28 @@
 
 ###
 GET {{baseURL}}/api/user
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMjExYmRmYzg3MDY2ZTNlMzgxNGNmZSIsInJvbGUiOiJtYW5hZ2VyIiwiaWF0IjoxNzgwNTczNDY0LCJleHAiOjE3ODA1ODA2NjR9.xcvvRhEFK5CVa_YKjzE1e9we_amJjOmAjbNUD-aPfvI
 
 ###
-GET {{baseURL}}/api/user/6a2114fb4a39fb0b8e314cb7
-
+GET {{baseURL}}/api/user/6a211bc077a2c3ed429ac666
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMjExYmRmYzg3MDY2ZTNlMzgxNGNmZSIsInJvbGUiOiJtYW5hZ2VyIiwiaWF0IjoxNzgwNTczNDY0LCJleHAiOjE3ODA1ODA2NjR9.xcvvRhEFK5CVa_YKjzE1e9we_amJjOmAjbNUD-aPfvI
 ###
 GET {{baseURL}}/api/user/search?ques=manager2
-
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMjExYmRmYzg3MDY2ZTNlMzgxNGNmZSIsInJvbGUiOiJtYW5hZ2VyIiwiaWF0IjoxNzgwNTY4NDQ1LCJleHAiOjE3ODA1NzU2NDV9.lfpZyKkf1ihVjvikF_i44FLSglbMmHckw5jHEpj2mac
 ###
 POST {{baseURL}}/api/user
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMjExYmRmYzg3MDY2ZTNlMzgxNGNmZSIsInJvbGUiOiJtYW5hZ2VyIiwiaWF0IjoxNzgwNTY4NDQ1LCJleHAiOjE3ODA1NzU2NDV9.lfpZyKkf1ihVjvikF_i44FLSglbMmHckw5jHEpj2mac
 Content-Type: application/json
 
 {
-    "username": "manager2",
+    "username": "manager3",
     "password": "newpassword111",
     "role": "manager"
 }
 
 ###
 PUT {{baseURL}}/api/user/6a0d921f1f7c246a8b66025c
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMjExYmRmYzg3MDY2ZTNlMzgxNGNmZSIsInJvbGUiOiJtYW5hZ2VyIiwiaWF0IjoxNzgwNTY4NDQ1LCJleHAiOjE3ODA1NzU2NDV9.lfpZyKkf1ihVjvikF_i44FLSglbMmHckw5jHEpj2mac
 Content-Type: application/json
 
 {
@@ -32,6 +35,7 @@ Content-Type: application/json
 ###
 
 PATCH {{baseURL}}/api/user/6a21154ebb5286100e9b43f1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMjExYmRmYzg3MDY2ZTNlMzgxNGNmZSIsInJvbGUiOiJtYW5hZ2VyIiwiaWF0IjoxNzgwNTY4NDQ1LCJleHAiOjE3ODA1NzU2NDV9.lfpZyKkf1ihVjvikF_i44FLSglbMmHckw5jHEpj2mac
 Content-Type: application/json
 
 {
@@ -40,7 +44,7 @@ Content-Type: application/json
 
 ###
 DELETE {{baseURL}}/api/user/6a0d921f1f7c246a8b66025c
-
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMjExYmRmYzg3MDY2ZTNlMzgxNGNmZSIsInJvbGUiOiJtYW5hZ2VyIiwiaWF0IjoxNzgwNTY4NDQ1LCJleHAiOjE3ODA1NzU2NDV9.lfpZyKkf1ihVjvikF_i44FLSglbMmHckw5jHEpj2mac
 ###
 
 ### login
@@ -57,13 +61,15 @@ Content-Type: application/json
 GET  {{baseURL}}/api/auth
 
 ###
-POST {{baseURL}}/api/auth/logout
-Content-Type: application/json
+# POST {{baseURL}}/api/auth/logout
+# Content-Type: application/json
 
-{
-    "username": "manager2",
-    "password": "newpassword123"
-}
+# {
+#     "username": "manager2",
+#     "password": "newpassword123"
+# }
+
+POST {{baseURL}}/api/auth/logout
 
 ###
 GET {{baseURL}}/api/menu/

@@ -1,27 +1,29 @@
 @baseURL = http://localhost:5000
 
 ###
-
-GET {{baseURL}}/api/tables
-
-###
-GET {{baseURL}}/api/tables/6a0d90be43b0c375c754c7e0
-
-###
-GET {{baseURL}}/api/tables/search?ques=M1
-
-###
-POST {{baseURL}}/api/tables
+POST {{baseURL}}/api/auth/login 
 Content-Type: application/json
 
 {
-    "area": "main",
-    "tableCode": "M11"
+    "username": "manager2",
+    "password": "newpassword111"
 }
 
 ###
+GET {{baseURL}}/api/table
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMjExYmRmYzg3MDY2ZTNlMzgxNGNmZSIsInJvbGUiOiJtYW5hZ2VyIiwiaWF0IjoxNzgwNTc1MTA0LCJleHAiOjE3ODA1ODIzMDR9.TYDMctbQhtOrcLkgjjLbJs-TEQrR9s2csVGjuvCw8xM
 
-PUT {{baseURL}}/api/tables/6a0d90be43b0c375c754c7e0
+###
+GET {{baseURL}}/api/table/6a0d90be43b0c375c754c7d8
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMjExYmRmYzg3MDY2ZTNlMzgxNGNmZSIsInJvbGUiOiJtYW5hZ2VyIiwiaWF0IjoxNzgwNTc1MTA0LCJleHAiOjE3ODA1ODIzMDR9.TYDMctbQhtOrcLkgjjLbJs-TEQrR9s2csVGjuvCw8xM
+
+###
+GET {{baseURL}}/api/table/search?ques=M1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMjExYmRmYzg3MDY2ZTNlMzgxNGNmZSIsInJvbGUiOiJtYW5hZ2VyIiwiaWF0IjoxNzgwNTc1MTA0LCJleHAiOjE3ODA1ODIzMDR9.TYDMctbQhtOrcLkgjjLbJs-TEQrR9s2csVGjuvCw8xM
+
+###
+POST {{baseURL}}/api/table
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMjExYmRmYzg3MDY2ZTNlMzgxNGNmZSIsInJvbGUiOiJtYW5hZ2VyIiwiaWF0IjoxNzgwNTc1MTA0LCJleHAiOjE3ODA1ODIzMDR9.TYDMctbQhtOrcLkgjjLbJs-TEQrR9s2csVGjuvCw8xM
 Content-Type: application/json
 
 {
@@ -31,4 +33,16 @@ Content-Type: application/json
 
 ###
 
-DELETE {{baseURL}}/api/tables/6a0d90be43b0c375c754c7e0
+PUT {{baseURL}}/api/table/6a216bb56caca4b08f11ac92
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMjExYmRmYzg3MDY2ZTNlMzgxNGNmZSIsInJvbGUiOiJtYW5hZ2VyIiwiaWF0IjoxNzgwNTc1MTA0LCJleHAiOjE3ODA1ODIzMDR9.TYDMctbQhtOrcLkgjjLbJs-TEQrR9s2csVGjuvCw8xM
+Content-Type: application/json
+
+{
+    "area": "main",
+    "tableCode": "O12"
+}
+
+###
+
+DELETE {{baseURL}}/api/table/6a216bb56caca4b08f11ac92
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMjExYmRmYzg3MDY2ZTNlMzgxNGNmZSIsInJvbGUiOiJtYW5hZ2VyIiwiaWF0IjoxNzgwNTc1MTA0LCJleHAiOjE3ODA1ODIzMDR9.TYDMctbQhtOrcLkgjjLbJs-TEQrR9s2csVGjuvCw8xM

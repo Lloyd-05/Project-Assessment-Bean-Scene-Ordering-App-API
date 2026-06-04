@@ -8,12 +8,15 @@ const env = require('dotenv').config();
 
 const app = express();
 
+app.use(express.json());
+
+
 app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerDocs));
 
 app.use(helmet());
-app.use(cors());
+app.use(cors({  allowedHeaders: ['Authorization', 'Content-Type']
+}));
 
-app.use(express.json());
 
 // Simple request logger to help debug Swagger requests
 // app.use((req, res, next) => {
@@ -22,7 +25,7 @@ app.use(express.json());
 //   next();
 // });
 
-swaggerDocs(app);
+// swaggerDocs(app);
 
 const menuRoutes = require("./routes/menuRoutes");
 const orderRoutes = require("./routes/orderRoutes");
@@ -40,6 +43,8 @@ app.use("/api/category", categoryRoutes);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {console.log(`Server running on port ${PORT}`)});
+  console.log(`Swagger docs available at http://localhost:${PORT}/api-docs`);
+
 
 // Improved error handler (shows stack in non-production)
 app.use((err, req, res, next) => {
