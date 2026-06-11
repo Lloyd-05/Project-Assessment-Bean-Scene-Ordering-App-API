@@ -59,7 +59,7 @@ app.use((err, req, res, next) => {
   res.status(status).json(payload);
 });
 
-mongoose
+mongoose //Connecting to MongooDB using Mongose with added success and error handling.
   .connect(process.env.MONGO_URI)
   .then(() => console.log("🍃 MongoDB Connected Successfully"))
   .catch((err) => console.log("❌ DB Connection Error:", err));
