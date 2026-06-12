@@ -11,7 +11,7 @@ Content-Type: application/json
 
 ###
 GET {{baseURL}}/api/menu
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMjExYmRmYzg3MDY2ZTNlMzgxNGNmZSIsInJvbGUiOiJtYW5hZ2VyIiwiaWF0IjoxNzgwNTc2MjkzLCJleHAiOjE3ODA1ODM0OTN9.clG9GjpD8YlXFMdTeVSBKwwPXZRkVtisGYInOLBkPZ8
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMjExYmRmYzg3MDY2ZTNlMzgxNGNmZSIsInJvbGUiOiJtYW5hZ2VyIiwiaWF0IjoxNzgxMjMwNjEzLCJleHAiOjE3ODEyMzc4MTN9.hSxhi_DR7u6fx2o7YnIEMq1DWEui4o6jfPMrsMmG854
 
 ###
 GET {{baseURL}}/api/menu/6a1c0790da31bdb4401c3678
@@ -21,7 +21,7 @@ GET {{baseURL}}/api/menu/search?ques=Steak
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMjExYmRmYzg3MDY2ZTNlMzgxNGNmZSIsInJvbGUiOiJtYW5hZ2VyIiwiaWF0IjoxNzgwNTc1ODgwLCJleHAiOjE3ODA1ODMwODB9.r9EOM_6I3bqTI1j_z4INhveE1bhnG8098PGcJ669_Xk
 ###
 POST {{baseURL}}/api/menu
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMjExYmRmYzg3MDY2ZTNlMzgxNGNmZSIsInJvbGUiOiJtYW5hZ2VyIiwiaWF0IjoxNzgwNTc1ODgwLCJleHAiOjE3ODA1ODMwODB9.r9EOM_6I3bqTI1j_z4INhveE1bhnG8098PGcJ669_Xk
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMjExYmRmYzg3MDY2ZTNlMzgxNGNmZSIsInJvbGUiOiJtYW5hZ2VyIiwiaWF0IjoxNzgxMjMwNjEzLCJleHAiOjE3ODEyMzc4MTN9.hSxhi_DR7u6fx2o7YnIEMq1DWEui4o6jfPMrsMmG854
 Content-Type: application/json
 
 {
@@ -40,12 +40,12 @@ Content-Type: application/json
 }
 
 ###
-PUT {{baseURL}}/api/menu/6a217147f62fec2944456b7a
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMjExYmRmYzg3MDY2ZTNlMzgxNGNmZSIsInJvbGUiOiJtYW5hZ2VyIiwiaWF0IjoxNzgwNTc1ODgwLCJleHAiOjE3ODA1ODMwODB9.r9EOM_6I3bqTI1j_z4INhveE1bhnG8098PGcJ669_Xk
+PUT {{baseURL}}/api/menu/6a21701bbc2eeb8b8547bcef
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMjExYmRmYzg3MDY2ZTNlMzgxNGNmZSIsInJvbGUiOiJtYW5hZ2VyIiwiaWF0IjoxNzgxMjMwNjEzLCJleHAiOjE3ODEyMzc4MTN9.hSxhi_DR7u6fx2o7YnIEMq1DWEui4o6jfPMrsMmG854
 Content-Type: application/json
 
 {
-    "name": "Earl Grey Tea",
+    "name": "Mocha Latte",
     "description": "A robust blend of black teas from Assam and Ceylon, perfect for a morning pick-me-up.",
     "category":"6a12f1c8398d135b84143a1c",
     "price": 3.5,
@@ -59,8 +59,8 @@ Content-Type: application/json
 }
 
 ###
-PATCH {{baseURL}}/api/menu/6a217147f62fec2944456b7a
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMjExYmRmYzg3MDY2ZTNlMzgxNGNmZSIsInJvbGUiOiJtYW5hZ2VyIiwiaWF0IjoxNzgwNTc1ODgwLCJleHAiOjE3ODA1ODMwODB9.r9EOM_6I3bqTI1j_z4INhveE1bhnG8098PGcJ669_Xk
+PATCH {{baseURL}}/api/menu/6a21701bbc2eeb8b8547bcef
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMjExYmRmYzg3MDY2ZTNlMzgxNGNmZSIsInJvbGUiOiJtYW5hZ2VyIiwiaWF0IjoxNzgxMjMwMzY3LCJleHAiOjE3ODEyMzc1Njd9.M1enaiRoI0yQao2Kp_yQJFat6cMsTYuACIJGkPcFQC4
 Content-Type: application/json
 
 {
@@ -69,5 +69,5 @@ Content-Type: application/json
 }
 
 ###
-DELETE {{baseURL}}/api/menu/6a217147f62fec2944456b7a
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMjExYmRmYzg3MDY2ZTNlMzgxNGNmZSIsInJvbGUiOiJtYW5hZ2VyIiwiaWF0IjoxNzgwNTc1ODgwLCJleHAiOjE3ODA1ODMwODB9.r9EOM_6I3bqTI1j_z4INhveE1bhnG8098PGcJ669_Xk
+DELETE {{baseURL}}/api/menu/6a21701bbc2eeb8b8547bcef
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMjExYmRmYzg3MDY2ZTNlMzgxNGNmZSIsInJvbGUiOiJtYW5hZ2VyIiwiaWF0IjoxNzgxMjMwMzY3LCJleHAiOjE3ODEyMzc1Njd9.M1enaiRoI0yQao2Kp_yQJFat6cMsTYuACIJGkPcFQC4

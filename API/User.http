@@ -11,7 +11,7 @@ Content-Type: application/json
 
 ###
 GET {{baseURL}}/api/user
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMjExYmRmYzg3MDY2ZTNlMzgxNGNmZSIsInJvbGUiOiJtYW5hZ2VyIiwiaWF0IjoxNzgwNjE2MjIyLCJleHAiOjE3ODA2MjM0MjJ9.G93xXAg85HoFdQsuwk9BAU8txBnPww5P-qEFb05ew2o
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMjExYmRmYzg3MDY2ZTNlMzgxNGNmZSIsInJvbGUiOiJtYW5hZ2VyIiwiaWF0IjoxNzgxMjMwMzY3LCJleHAiOjE3ODEyMzc1Njd9.M1enaiRoI0yQao2Kp_yQJFat6cMsTYuACIJGkPcFQC4
 
 ###
 GET {{baseURL}}/api/user/6a211bc077a2c3ed429ac666

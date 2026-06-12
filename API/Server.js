@@ -5,6 +5,7 @@ const helmet = require("helmet");
 const cors = require("cors")
 const mongoose = require("mongoose");
 const env = require('dotenv').config();
+const menuWatcher = require("./watchers/menuWatcher");
 
 const app = express();
 
@@ -63,3 +64,5 @@ mongoose //Connecting to MongooDB using Mongose with added success and error han
   .connect(process.env.MONGO_URI)
   .then(() => console.log("🍃 MongoDB Connected Successfully"))
   .catch((err) => console.log("❌ DB Connection Error:", err));
+
+menuWatcher(); // Start the menu change stream watcher
