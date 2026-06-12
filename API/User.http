@@ -11,7 +11,7 @@ Content-Type: application/json
 
 ###
 GET {{baseURL}}/api/user
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMjExYmRmYzg3MDY2ZTNlMzgxNGNmZSIsInJvbGUiOiJtYW5hZ2VyIiwiaWF0IjoxNzgxMjMwMzY3LCJleHAiOjE3ODEyMzc1Njd9.M1enaiRoI0yQao2Kp_yQJFat6cMsTYuACIJGkPcFQC4
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMjExYmRmYzg3MDY2ZTNlMzgxNGNmZSIsInJvbGUiOiJtYW5hZ2VyIiwiaWF0IjoxNzgxMjQwODI1LCJleHAiOjE3ODEyNDgwMjV9.ymPS0cV_LZyFfBaifr2NTFzu99xHTll8SgmebrV4ad8
 
 ###
 GET {{baseURL}}/api/user/6a211bc077a2c3ed429ac666
@@ -53,7 +53,7 @@ Content-Type: application/json
 
 ###
 DELETE {{baseURL}}/api/user/6a0d921f1f7c246a8b66025c
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMjExYmRmYzg3MDY2ZTNlMzgxNGNmZSIsInJvbGUiOiJtYW5hZ2VyIiwiaWF0IjoxNzgwNTY4NDQ1LCJleHAiOjE3ODA1NzU2NDV9.lfpZyKkf1ihVjvikF_i44FLSglbMmHckw5jHEpj2mac
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMjExYmRmYzg3MDY2ZTNlMzgxNGNmZSIsInJvbGUiOiJtYW5hZ2VyIiwiaWF0IjoxNzgxMjQwODI1LCJleHAiOjE3ODEyNDgwMjV9.ymPS0cV_LZyFfBaifr2NTFzu99xHTll8SgmebrV4ad8
 
 ###
 
@@ -69,6 +69,7 @@ GET  {{baseURL}}/api/auth
 # }
 
 POST {{baseURL}}/api/auth/logout
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMjExYmRmYzg3MDY2ZTNlMzgxNGNmZSIsInJvbGUiOiJtYW5hZ2VyIiwiaWF0IjoxNzgxMjQxNDM3LCJleHAiOjE3ODEyNDg2Mzd9.QM3XkP1B3kDFLzGTg2CxWmkqYj8-PxH4zr06HsjhJFA
 
 ###
 GET {{baseURL}}/api/menu/
