@@ -1,6 +1,7 @@
 const jwt = require('jsonwebtoken');
+const Session = require("../models/Session");
 
-const auth = (req, res, next) => {
+const auth = async (req, res, next) => {
   // 1. Get the token from the header
   // Standard format: "Authorization: Bearer <token>"
 // const authHeader = req.headers.authorization;
@@ -20,11 +21,18 @@ const authHeader = req.headers.authorization;
     // 4. Verify the token using our Secret Key from .env
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
-    // 5. Attach the user data (id and role) to the request object
+    // 5. Check if the session exists in the database (not expired or deleted)
+    const session = await Session.findOne({ token: token });
+
+    if (!session) {
+      return res.status(401).json({ message: 'Session not found or expired, please log in again' });
+    }
+
+    // 6. Attach the user data (id and role) to the request object
     // Now every route that uses this middleware can access 'req.user'
     req.user = decoded;
 
-    // 6. Let the request continue to the route!
+    // 7. Let the request continue to the route!
     next();
   } catch (err) {
     // If the token is expired or fake, jwt.verify throws an error

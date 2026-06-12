@@ -2,6 +2,8 @@ const router = require('express').Router();
 const User = require('../models/User');
 const bcrypt = require('bcryptjs');
 const jwt = require("jsonwebtoken");
+const session = require("../models/Session");
+const Session = require('../models/Session');
 
 /**
  * @swagger
@@ -87,10 +89,13 @@ router.post("/login", async (req, res) => {
 
     const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '2h' });
 
+    await Session.create({ userId: user._id, token: token }); // Store the session in the database
+
     res.json({
-      message: "Login Successful",
-      token, // <-- raw token only
+      message: "Login Successful", token, // <-- raw token only
+
       user: { id: user._id, username: user.username, role: user.role }
+
     });
 
   } catch (err) {
@@ -107,11 +112,29 @@ router.post("/login", async (req, res) => {
  *     responses:
  *       200:
  *         description: Logout successful
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
  *     security: []
  */
 // POST /api/auth/logout
-router.post("/logout", (req, res) => {
-  res.json({ message: "Logged out" });
+router.post("/logout", async (req, res) => {
+
+  const authHeader = req.headers.authorization;
+
+  if (!authHeader || !authHeader.startsWith("Bearer ")) {
+    return res.status(400).json({ message: "No token provided" });
+  }
+
+  const token = authHeader.split(" ")[1];
+
+  await Session.deleteOne({ token: token });
+
+  res.json({ message: "Logged out and session token deleted" });
 });
 
 module.exports = router;
