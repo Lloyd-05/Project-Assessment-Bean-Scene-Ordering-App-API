@@ -107,11 +107,14 @@ router.post("/login", async (req, res) => {
  * @swagger
  * /auth/logout:
  *   post:
- *     summary: Logout user
+ *     summary: Logout the authenticated user
+ *     description: Deletes the user's active session token, effectively logging them out.
  *     tags: [Auth]
+ *     security:
+ *       - bearerAuth: []   # Requires JWT token
  *     responses:
  *       200:
- *         description: Logout successful
+ *         description: Logout successful and session token deleted
  *         content:
  *           application/json:
  *             schema:
@@ -119,7 +122,11 @@ router.post("/login", async (req, res) => {
  *               properties:
  *                 message:
  *                   type: string
- *     security: []
+ *                   example: Logged out and session token deleted
+ *       400:
+ *         description: No token provided
+ *       500:
+ *         description: Server error
  */
 // POST /api/auth/logout
 router.post("/logout", async (req, res) => {
