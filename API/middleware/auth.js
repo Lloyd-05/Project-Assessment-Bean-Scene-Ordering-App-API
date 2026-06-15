@@ -1,35 +1,28 @@
 const jwt = require('jsonwebtoken');
 const Session = require("../models/Session");
 
-const auth = async (req, res, next) => {
-  // 1. Get the token from the header
-  // Standard format: "Authorization: Bearer <token>"
-// const authHeader = req.headers.authorization;
-const authHeader = req.headers.authorization;
+const auth = async (req, res, next) => {   // Get the token from the header
 
-  // const authHeader = req.headers['authorization'] || req.get['Authorization']; // Handle case-insensitive header name
+const authHeader = req.headers.authorization; // Standard format: "Authorization: Bearer <token>"
 
-  // 2. Check if the header exists and starts with "Bearer "
-  if (!authHeader || !authHeader.startsWith('Bearer ')) {
+  if (!authHeader || !authHeader.startsWith('Bearer ')) {   // Check if the header exists and starts with "Bearer "
     return res.status(401).json({ message: 'No token, authorization denied' });
   }
 
-  // 3. Extract the actual token string (remove "Bearer ")
-  const token = authHeader.split(' ')[1];
+  const token = authHeader.split(' ')[1];   // Extract the actual token string (remove "Bearer ")
 
   try {
-    // 4. Verify the token using our Secret Key from .env
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
-    // 5. Check if the session exists in the database (not expired or deleted)
-    const session = await Session.findOne({ token: token });
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);     // Verify the token using our Secret Key from .env
 
-    if (!session) {
+    const session = await Session.findOne({ token: token });     // Check if the session exists in the database (not expired or deleted)
+
+    if (!session) { // If no session is found, it means the token is either expired or invalid
       return res.status(401).json({ message: 'Session not found or expired, please log in again' });
     }
 
-    // 6. Attach the user data (id and role) to the request object
-    // Now every route that uses this middleware can access 'req.user'
+    /*Attach the user data (id and role) to the request object
+    // Now every route that uses this middleware can access 'req.user' */
     req.user = decoded;
 
     // 7. Let the request continue to the route!
