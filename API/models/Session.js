@@ -1,5 +1,3 @@
-//TODO: add a timer to the session model, and a function to check if the session has expired. If it has, delete the session from the database.
-
 const mongoose = require("mongoose");
 
 const sessionSchema = new mongoose.Schema({
