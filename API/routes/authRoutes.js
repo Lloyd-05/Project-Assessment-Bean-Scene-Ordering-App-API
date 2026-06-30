@@ -2,8 +2,7 @@ const router = require('express').Router();
 const User = require('../models/User');
 const bcrypt = require('bcryptjs');
 const jwt = require("jsonwebtoken");
-const session = require("../models/Session");
-const Session = require('../models/Session');
+const Session = require("../models/Session");
 
 /**
  * @swagger
@@ -72,6 +71,8 @@ router.post("/login", async (req, res) => {
 
   try {
     const user = await User.findOne({ username: username }).select('+password');
+        // const user = await User.findOne({ username: username })
+
     if (!user) {
       return res.status(401).json({ message: 'Invalid Username or Password' });
     }
@@ -89,16 +90,17 @@ router.post("/login", async (req, res) => {
 
     const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '2h' });
 
-    await Session.create({ userId: user._id, token: token }); // Store the session in the database
+    await Session.create({ userId: user._id, token: token }); 
 
     res.json({
-      message: "Login Successful", token, // <-- raw token only
+      message: "Login Successful", token,
 
       user: { id: user._id, username: user.username, role: user.role }
 
     });
 
   } catch (err) {
+    console.error("Login error:", err);
     res.status(500).json({ message: 'Server error' });
   }
 });
