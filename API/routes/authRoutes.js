@@ -70,8 +70,9 @@ router.post("/login", async (req, res) => {
   }
 
   try {
+
+    // const user = await User.findOne({ username: username })
     const user = await User.findOne({ username: username }).select('+password');
-        // const user = await User.findOne({ username: username })
 
     if (!user) {
       return res.status(401).json({ message: 'Invalid Username or Password' });
@@ -90,7 +91,7 @@ router.post("/login", async (req, res) => {
 
     const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '2h' });
 
-    await Session.create({ userId: user._id, token: token }); 
+    await Session.create({ userId: user._id, token: token, expiresAt: new Date(Date.now() + 2 * 60 * 60 * 1000) }); // 2 hours
 
     res.json({
       message: "Login Successful", token,
