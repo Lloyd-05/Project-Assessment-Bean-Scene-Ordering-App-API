@@ -77,7 +77,12 @@ const authorizeRole = require("../middleware/roleAuth");
  */
 router.get("/", auth, authorizeRole("staff", "manager"),async (req, res) => {
   try {
-    const orders = await Order.find();
+        // const orders = await Order.find()
+
+    // const orders = await Order.find().populate({path: "menuItems.menuItemId",model: "Menu"});
+    // res.json(orders);
+    const orders = await Order.find().populate("menuItems.menuItemId").exec();
+
     res.json(orders);
   } catch (err) {
     res.status(500).json({ message: `Error fetching orders: ${err.message}` });

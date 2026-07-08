@@ -30,7 +30,9 @@ const authorizeRole = require("../middleware/roleAuth");
  */
 router.get("/", auth, authorizeRole("staff", "manager"), async (req, res) => {
   try {
-    const menuItems = await Menu.find();
+        const menuItems = await Menu.find();
+
+    // const menuItems = await Menu.find().populate("category", "name");
     res.json(menuItems);
   } catch (err) {
     res.status(500).json({ message: `Error fetching menu items: ${err.message}` });
@@ -67,7 +69,7 @@ router.get("/search", auth, authorizeRole("staff", "manager"), async (req, res) 
     const ques = req.query.ques;
     const items = await Menu.find({
       name: { $regex: ques, $options: "i" },
-    });
+    }).populate("category", "name");
     res.json(items);
   } catch (err) {
     res.status(500).json({ message: err.message });
@@ -100,7 +102,7 @@ router.get("/search", auth, authorizeRole("staff", "manager"), async (req, res) 
  */
 router.get("/:id", auth, authorizeRole("staff", "manager"), async (req, res) => {
   try {
-    const menuItem = await Menu.findById(req.params.id);
+    const menuItem = await Menu.findById(req.params.id).populate("category", "name");
     if (!menuItem) {
       return res.status(404).json({ message: "Menu item not found" });
     }
