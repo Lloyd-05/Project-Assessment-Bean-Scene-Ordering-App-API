@@ -6,6 +6,9 @@ const cors = require("cors")
 const mongoose = require("mongoose");
 const env = require('dotenv').config();
 const menuWatcher = require("./watchers/menuWatcher");
+const ApplicationLog = require("./ApplicationLog");
+
+ApplicationLog();
 
 const app = express();
 
@@ -41,6 +44,11 @@ app.use("/api/table", tableRoutes);
 app.use("/api/user", userRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/category", categoryRoutes);
+
+app.get("/api/health", (req, res) => {
+  res.json({ status: "ok" });
+});
+
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {console.log(`Server running on port ${PORT}`)});
