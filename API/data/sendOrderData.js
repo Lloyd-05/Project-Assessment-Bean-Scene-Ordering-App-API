@@ -51,7 +51,38 @@ const sendOrderData = async () => {
                         quantity: 2
                     }
                 ]
+            },
+            {
+                tableCode: "B3",
+                dateTime: new Date("2026-06-22T09:00:00Z"),
+                status: "completed",
+                menuItems: [
+                    {
+                        menuItemId: CaesarSalad._id,
+                        quantity: 1
+                    },
+                    {
+                        menuItemId: SteakSandwich._id,
+                        quantity: 2
+                    }
+                ]
+            },
+            {
+                tableCode: "M3",
+                dateTime: new Date("2026-06-22T09:00:00Z"),
+                status: "completed",
+                menuItems: [
+                    {
+                        menuItemId: CaesarSalad._id,
+                        quantity: 1
+                    },
+                    {
+                        menuItemId: SteakSandwich._id,
+                        quantity: 2
+                    }
+                ]
             }
+
         ]);
         console.log("Data sent successfully");
         mongoose.connection.close();
