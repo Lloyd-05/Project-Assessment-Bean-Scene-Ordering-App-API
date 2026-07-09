@@ -10,10 +10,11 @@ const sessionSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    createdAt: {
+    expiresAt: {
         type: Date,
-        default: Date.now,
-        expires: '7d' // Session expires after 7 days
+        // default: Date.now,
+        required: true,
+        index: { expires: '7d' } // Session expires after 7 days
     }
 },
     {

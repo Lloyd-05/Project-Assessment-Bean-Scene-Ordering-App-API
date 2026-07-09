@@ -11,12 +11,12 @@ const sendMenuData = async () => {
         await Menu.deleteMany({}); // Clear existing data
 
         // Fetch categories first
-        const entreesCategory = await Category.findOne({ name: "entrees" });
-        const mainsCategory = await Category.findOne({ name: "mains" });
-        const dessertsCategory = await Category.findOne({ name: "desserts" });
-        const drinksCategory = await Category.findOne({ name: "drinks" });
-        const sidesCategory = await Category.findOne({ name: "sides" });
-        const specialsCategory = await Category.findOne({ name: "specials" });
+        const entreesCategory = await Category.findOne({ name: "Entrees" });
+        const mainsCategory = await Category.findOne({ name: "Mains" });
+        const dessertsCategory = await Category.findOne({ name: "Desserts" });
+        const drinksCategory = await Category.findOne({ name: "Drinks" });
+        const sidesCategory = await Category.findOne({ name: "Sides" });
+        const specialsCategory = await Category.findOne({ name: "Specials" });
 
         await Menu.create([
             {

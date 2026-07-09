@@ -10,12 +10,12 @@ const sendCategoryData = async () => {
         await Category.deleteMany({}); // Clear existing data
 
         await Category.create([
-            { name: "entrees" },
-            { name: "mains" },
-            { name: "desserts" },
-            { name: "drinks" },
-            { name: "sides" },
-            { name: "specials" }
+            { name: "Entrees" },
+            { name: "Mains" },
+            { name: "Desserts" },
+            { name: "Drinks" },
+            { name: "Sides" },
+            { name: "Specials" }
         ]);
         console.log("Data sent successfully");
         mongoose.connection.close();
