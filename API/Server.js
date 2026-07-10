@@ -38,12 +38,12 @@ const tableRoutes = require("./routes/tableRoutes");
 const authRoutes = require("./routes/authRoutes");
 const categoryRoutes = require("./routes/categoryRoutes");
 
-app.use("/api/menu", menuRoutes);
-app.use("/api/order", orderRoutes);
-app.use("/api/table", tableRoutes);
-app.use("/api/user", userRoutes);
+app.use("/api/menu-items", menuRoutes);
+app.use("/api/orders", orderRoutes);
+app.use("/api/tables", tableRoutes);
+app.use("/api/users", userRoutes);
 app.use("/api/auth", authRoutes);
-app.use("/api/category", categoryRoutes);
+app.use("/api/menu-categories", categoryRoutes);
 
 app.get("/api/health", (req, res) => {
   res.json({ status: "ok" });
