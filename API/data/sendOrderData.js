@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const order = require("../models/Order");
 const menu = require("../models/Menu");
-require("dotenv").config();
+require("dotenv").config({ path: "./.env" });
 
 const sendOrderData = async () => {
     try {
