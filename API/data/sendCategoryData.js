@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const Category = require("../models/Category");
-require("dotenv").config();
+require("dotenv").config({ path: "./.env" });
 
 const sendCategoryData = async () => {
     try {

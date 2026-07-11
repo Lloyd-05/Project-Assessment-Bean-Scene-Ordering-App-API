@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const Table = require('../models/Table');
-require("dotenv").config();
+require("dotenv").config({ path: "./.env" });
 
 const sendTableData = async () => {
     try {
