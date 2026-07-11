@@ -1,5 +1,5 @@
 const fs = require("fs");
-console.log(" Writing into log ");
+console.log(" Writing into log \n");
 
 const localDate = new Date().toLocaleDateString('en-GB');
 const localTime = new Date().toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' });
@@ -15,8 +15,8 @@ const ApplicationLog = async () => {
             }
 
             // If no error the remaining code executes
-            console.log("Finished writing ");
-            console.log("Reading the log entry that's written");
+            console.log("Finished writing \n");
+            console.log("Reading the log entry that's written\n");
 
             // Reading the file
             fs.readFile("log.txt", function (err, data) {
