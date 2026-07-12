@@ -53,6 +53,10 @@ app.get("/", (req, res) => {
   res.send("Bean Scene API is running");
 });
 
+app.get("/api", (req, res) => {
+  res.send("API project root is available");
+});
+
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, '0.0.0.0', () => {
   console.log(`Server running on http://0.0.0.0:${PORT}`);
