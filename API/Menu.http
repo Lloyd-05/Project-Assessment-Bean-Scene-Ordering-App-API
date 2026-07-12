@@ -5,20 +5,20 @@ POST {{baseURL}}/api/auth/login
 Content-Type: application/json
 
 {
-    "username": "manager2",
-    "password": "newpassword111"
+    "username": "manager1",
+    "password": "password123"
 }
 
 ###
-GET {{baseURL}}/api/menu
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMjExYmRmYzg3MDY2ZTNlMzgxNGNmZSIsInJvbGUiOiJtYW5hZ2VyIiwiaWF0IjoxNzgxMjMwNjEzLCJleHAiOjE3ODEyMzc4MTN9.hSxhi_DR7u6fx2o7YnIEMq1DWEui4o6jfPMrsMmG854
+GET {{baseURL}}/api/menu-items
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhNTI0ZDYxOTEzNTk4OGI0MzJkNGY0NSIsInJvbGUiOiJtYW5hZ2VyIiwiaWF0IjoxNzgzODM1MDY4LCJleHAiOjE3ODM4NDIyNjh9.WIH7sCLwR1kcsC0F2V6kKlkt_G-go901gqbEhHZxTZk
 
 ###
 GET {{baseURL}}/api/menu/6a1c0790da31bdb4401c3678
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMjExYmRmYzg3MDY2ZTNlMzgxNGNmZSIsInJvbGUiOiJtYW5hZ2VyIiwiaWF0IjoxNzgwNTc1ODgwLCJleHAiOjE3ODA1ODMwODB9.r9EOM_6I3bqTI1j_z4INhveE1bhnG8098PGcJ669_Xk
 ###
-GET {{baseURL}}/api/menu/search?ques=Steak
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMjExYmRmYzg3MDY2ZTNlMzgxNGNmZSIsInJvbGUiOiJtYW5hZ2VyIiwiaWF0IjoxNzgwNTc1ODgwLCJleHAiOjE3ODA1ODMwODB9.r9EOM_6I3bqTI1j_z4INhveE1bhnG8098PGcJ669_Xk
+GET {{baseURL}}/api/menu-items/search?query=Steak
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhNTI0ZDYxOTEzNTk4OGI0MzJkNGY0NSIsInJvbGUiOiJtYW5hZ2VyIiwiaWF0IjoxNzgzODM1MDY4LCJleHAiOjE3ODM4NDIyNjh9.WIH7sCLwR1kcsC0F2V6kKlkt_G-go901gqbEhHZxTZk
 ###
 POST {{baseURL}}/api/menu
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMjExYmRmYzg3MDY2ZTNlMzgxNGNmZSIsInJvbGUiOiJtYW5hZ2VyIiwiaWF0IjoxNzgxNDgzMzczLCJleHAiOjE3ODE0OTA1NzN9.brNKwQn2pEHphetppcxws4WE26K7mSZJCKy7ZmHOjXM

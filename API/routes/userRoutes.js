@@ -64,9 +64,9 @@ router.get("/", auth, authorizeRole("staff", "manager"),async (req, res) => {
  */
 router.get("/search", auth, authorizeRole("staff", "manager"), async (req, res) => {
   try {
-    const ques = req.query.ques;
+    const query = req.query.query;
     const users = await User.find({
-      username: { $regex: ques, $options: "i" },
+      username: { $regex: query, $options: "i" },
     });
     res.json(users);
   } catch (err) {
