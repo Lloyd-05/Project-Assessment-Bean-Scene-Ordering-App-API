@@ -66,9 +66,9 @@ router.get("/", auth, authorizeRole("staff", "manager"), async (req, res) => {
  */
 router.get("/search", auth, authorizeRole("staff", "manager"), async (req, res) => {
   try {
-    const ques = req.query.ques;
+    const query = req.query.query;
     const items = await Menu.find({
-      name: { $regex: ques, $options: "i" },
+      name: { $regex: query, $options: "i" },
     }).populate("category", "name");
     res.json(items);
   } catch (err) {
