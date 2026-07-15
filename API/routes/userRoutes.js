@@ -12,7 +12,7 @@ const authorizeRole = require("../middleware/roleAuth");
 
 /**
  * @swagger
- * /user:
+ * /users:
  *   get:
  *     summary: Get all users
  *     tags: [User]
@@ -39,13 +39,13 @@ router.get("/", auth, authorizeRole("staff", "manager"),async (req, res) => {
 
 /**
  * @swagger
- * /user/search:
+ * /users/search:
  *   get:
  *     summary: Search users by username
  *     tags: [User]
  *     parameters:
  *       - in: query
- *         name: ques
+ *         name: query
  *         required: true
  *         schema:
  *           type: string
@@ -76,7 +76,7 @@ router.get("/search", auth, authorizeRole("staff", "manager"), async (req, res) 
 
 /**
  * @swagger
- * /user/{id}:
+ * /users/{id}:
  *   get:
  *     summary: Get a user by ID
  *     tags: [User]
@@ -113,7 +113,7 @@ router.get("/:id", auth, authorizeRole("staff", "manager"), async (req, res) => 
 
 /**
  * @swagger
- * /user:
+ * /users:
  *   post:
  *     summary: Create a new user
  *     tags: [User]
@@ -146,7 +146,7 @@ router.post("/", auth, authorizeRole("manager"), async (req, res) => {
 
 /**
  * @swagger
- * /user/{id}:
+ * /users/{id}:
  *   put:
  *     summary: Replace a user
  *     tags: [User]
@@ -196,7 +196,7 @@ router.put("/:id", auth, authorizeRole( "manager"), async (req, res) => {
 
 /**
  * @swagger
- * /user/{id}:
+ * /users/{id}:
  *   patch:
  *     summary: Partially update a user
  *     tags: [User]
@@ -241,7 +241,7 @@ router.patch("/:id", auth, authorizeRole("manager"), async (req, res) => {
 
 /**
  * @swagger
- * /user/{id}:
+ * /users/{id}:
  *   delete:
  *     summary: Delete a user
  *     tags: [User]

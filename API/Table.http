@@ -1,5 +1,6 @@
 @baseURL = http://localhost:5000
 
+@JWTToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhNTU3NjZlOTQ4ZGE1NGQ5NDFlMmI1MCIsInJvbGUiOiJtYW5hZ2VyIiwiaWF0IjoxNzg0MTEyMTMwLCJleHAiOjE3ODQxMTkzMzB9.qzDY65zwJ97bThxB8SPIhr_JvlkWLegcQ4PhyaT_auc
 ###
 POST {{baseURL}}/api/auth/login 
 Content-Type: application/json
@@ -10,20 +11,20 @@ Content-Type: application/json
 }
 
 ###
-GET {{baseURL}}/api/table
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMjExYmRmYzg3MDY2ZTNlMzgxNGNmZSIsInJvbGUiOiJtYW5hZ2VyIiwiaWF0IjoxNzgwNTc1MTA0LCJleHAiOjE3ODA1ODIzMDR9.TYDMctbQhtOrcLkgjjLbJs-TEQrR9s2csVGjuvCw8xM
+GET {{baseURL}}/api/tables
+Authorization: Bearer {{JWTToken}}
 
 ###
-GET {{baseURL}}/api/table/6a0d90be43b0c375c754c7d8
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMjExYmRmYzg3MDY2ZTNlMzgxNGNmZSIsInJvbGUiOiJtYW5hZ2VyIiwiaWF0IjoxNzgwNTc1MTA0LCJleHAiOjE3ODA1ODIzMDR9.TYDMctbQhtOrcLkgjjLbJs-TEQrR9s2csVGjuvCw8xM
+GET {{baseURL}}/api/tables/6a0d90be43b0c375c754c7d8
+Authorization: Bearer {{JWTToken}}
 
 ###
-GET {{baseURL}}/api/table/search?ques=M1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMjExYmRmYzg3MDY2ZTNlMzgxNGNmZSIsInJvbGUiOiJtYW5hZ2VyIiwiaWF0IjoxNzgwNTc1MTA0LCJleHAiOjE3ODA1ODIzMDR9.TYDMctbQhtOrcLkgjjLbJs-TEQrR9s2csVGjuvCw8xM
+GET {{baseURL}}/api/tables/search?query=M1
+Authorization: Bearer {{JWTToken}}
 
 ###
-POST {{baseURL}}/api/table
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMjExYmRmYzg3MDY2ZTNlMzgxNGNmZSIsInJvbGUiOiJtYW5hZ2VyIiwiaWF0IjoxNzgwNTc1MTA0LCJleHAiOjE3ODA1ODIzMDR9.TYDMctbQhtOrcLkgjjLbJs-TEQrR9s2csVGjuvCw8xM
+POST {{baseURL}}/api/tables
+Authorization: Bearer {{JWTToken}}
 Content-Type: application/json
 
 {
@@ -33,8 +34,8 @@ Content-Type: application/json
 
 ###
 
-PUT {{baseURL}}/api/table/6a216bb56caca4b08f11ac92
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMjExYmRmYzg3MDY2ZTNlMzgxNGNmZSIsInJvbGUiOiJtYW5hZ2VyIiwiaWF0IjoxNzgwNTc1MTA0LCJleHAiOjE3ODA1ODIzMDR9.TYDMctbQhtOrcLkgjjLbJs-TEQrR9s2csVGjuvCw8xM
+PUT {{baseURL}}/api/tables/6a216bb56caca4b08f11ac92
+Authorization: Bearer {{JWTToken}}
 Content-Type: application/json
 
 {
@@ -44,5 +45,5 @@ Content-Type: application/json
 
 ###
 
-DELETE {{baseURL}}/api/table/6a216bb56caca4b08f11ac92
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMjExYmRmYzg3MDY2ZTNlMzgxNGNmZSIsInJvbGUiOiJtYW5hZ2VyIiwiaWF0IjoxNzgwNTc1MTA0LCJleHAiOjE3ODA1ODIzMDR9.TYDMctbQhtOrcLkgjjLbJs-TEQrR9s2csVGjuvCw8xM
+DELETE {{baseURL}}/api/tables/6a216bb56caca4b08f11ac92
+Authorization: Bearer {{JWTToken}}

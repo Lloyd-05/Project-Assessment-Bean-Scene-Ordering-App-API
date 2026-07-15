@@ -36,7 +36,7 @@ const authorizeRole = require("../middleware/roleAuth");
 
 /**
  * @swagger
- * /table:
+ * /tables:
  *   get:
  *     summary: Get all tables
  *     tags: [Table]
@@ -63,13 +63,13 @@ router.get("/", auth, authorizeRole("staff", "manager"), async (req, res) => {
 
 /**
  * @swagger
- * /table/search:
+ * /tables/search:
  *   get:
  *     summary: Search tables by table code
  *     tags: [Table]
  *     parameters:
  *       - in: query
- *         name: ques
+ *         name: query
  *         required: true
  *         schema:
  *           type: string
@@ -100,7 +100,7 @@ router.get("/search", auth, authorizeRole("staff", "manager"), async (req, res) 
 
 /**
  * @swagger
- * /table/{id}:
+ * /tables/{id}:
  *   get:
  *     summary: Get a specific table by ID
  *     tags: [Table]
@@ -136,7 +136,7 @@ router.get("/:id", auth, authorizeRole("staff", "manager"), async (req, res) => 
 
 /**
  * @swagger
- * /table:
+ * /tables:
  *   post:
  *     summary: Create a new table
  *     tags: [Table]
@@ -171,7 +171,7 @@ router.post("/", auth, authorizeRole("manager"), async (req, res) => {
 
 /**
  * @swagger
- * /table/{id}:
+ * /tables/{id}:
  *   put:
  *     summary: Update a specific table by ID
  *     tags: [Table]
@@ -220,7 +220,7 @@ router.put("/:id", auth, authorizeRole("manager"), async (req, res) => {
 
 /**
  * @swagger
- * /table/{id}:
+ * /tables/{id}:
  *   delete:
  *     summary: Delete a specific table by ID
  *     tags: [Table]

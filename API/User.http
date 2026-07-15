@@ -1,27 +1,27 @@
 @baseURL = http://localhost:5000
-
+@JWTToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhNTU3NjZlOTQ4ZGE1NGQ5NDFlMmI1MCIsInJvbGUiOiJtYW5hZ2VyIiwiaWF0IjoxNzg0MTEyMTMwLCJleHAiOjE3ODQxMTkzMzB9.qzDY65zwJ97bThxB8SPIhr_JvlkWLegcQ4PhyaT_auc
 ### login
 POST {{baseURL}}/api/auth/login 
 Content-Type: application/json
 
 {
-    "username": "manager2",
-    "password": "newpassword111"
+    "username": "manager1",
+    "password": "password123"
 }
 
 ###
-GET {{baseURL}}/api/user
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMjExYmRmYzg3MDY2ZTNlMzgxNGNmZSIsInJvbGUiOiJtYW5hZ2VyIiwiaWF0IjoxNzgxMjQwODI1LCJleHAiOjE3ODEyNDgwMjV9.ymPS0cV_LZyFfBaifr2NTFzu99xHTll8SgmebrV4ad8
+GET {{baseURL}}/api/users
+Authorization: Bearer {{JWTToken}}
 
 ###
-GET {{baseURL}}/api/user/6a211bc077a2c3ed429ac666
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMjExYmRmYzg3MDY2ZTNlMzgxNGNmZSIsInJvbGUiOiJtYW5hZ2VyIiwiaWF0IjoxNzgwNTczNDY0LCJleHAiOjE3ODA1ODA2NjR9.xcvvRhEFK5CVa_YKjzE1e9we_amJjOmAjbNUD-aPfvI
+GET {{baseURL}}/api/users/6a211bc077a2c3ed429ac666
+Authorization: Bearer {{JWTToken}}
 ###
-GET {{baseURL}}/api/user/search?ques=manager2
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMjExYmRmYzg3MDY2ZTNlMzgxNGNmZSIsInJvbGUiOiJtYW5hZ2VyIiwiaWF0IjoxNzgwNTY4NDQ1LCJleHAiOjE3ODA1NzU2NDV9.lfpZyKkf1ihVjvikF_i44FLSglbMmHckw5jHEpj2mac
+GET {{baseURL}}/api/users/search?query=manager2
+Authorization: Bearer {{JWTToken}}
 ###
-POST {{baseURL}}/api/user
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMjExYmRmYzg3MDY2ZTNlMzgxNGNmZSIsInJvbGUiOiJtYW5hZ2VyIiwiaWF0IjoxNzgwNTY4NDQ1LCJleHAiOjE3ODA1NzU2NDV9.lfpZyKkf1ihVjvikF_i44FLSglbMmHckw5jHEpj2mac
+POST {{baseURL}}/api/users
+Authorization: Bearer {{JWTToken}}
 Content-Type: application/json
 
 {
@@ -31,8 +31,8 @@ Content-Type: application/json
 }
 
 ###
-PUT {{baseURL}}/api/user/6a0d921f1f7c246a8b66025c
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMjExYmRmYzg3MDY2ZTNlMzgxNGNmZSIsInJvbGUiOiJtYW5hZ2VyIiwiaWF0IjoxNzgwNTY4NDQ1LCJleHAiOjE3ODA1NzU2NDV9.lfpZyKkf1ihVjvikF_i44FLSglbMmHckw5jHEpj2mac
+PUT {{baseURL}}/api/users/6a0d921f1f7c246a8b66025c
+Authorization: Bearer {{JWTToken}}
 Content-Type: application/json
 
 {
@@ -43,8 +43,8 @@ Content-Type: application/json
 
 ###
 
-PATCH {{baseURL}}/api/user/6a21154ebb5286100e9b43f1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMjExYmRmYzg3MDY2ZTNlMzgxNGNmZSIsInJvbGUiOiJtYW5hZ2VyIiwiaWF0IjoxNzgwNTY4NDQ1LCJleHAiOjE3ODA1NzU2NDV9.lfpZyKkf1ihVjvikF_i44FLSglbMmHckw5jHEpj2mac
+PATCH {{baseURL}}/api/users/6a21154ebb5286100e9b43f1
+Authorization: Bearer {{JWTToken}}
 Content-Type: application/json
 
 {
@@ -52,8 +52,8 @@ Content-Type: application/json
 }
 
 ###
-DELETE {{baseURL}}/api/user/6a0d921f1f7c246a8b66025c
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMjExYmRmYzg3MDY2ZTNlMzgxNGNmZSIsInJvbGUiOiJtYW5hZ2VyIiwiaWF0IjoxNzgxMjQwODI1LCJleHAiOjE3ODEyNDgwMjV9.ymPS0cV_LZyFfBaifr2NTFzu99xHTll8SgmebrV4ad8
+DELETE {{baseURL}}/api/users/6a0d921f1f7c246a8b66025c
+Authorization: Bearer {{JWTToken}}
 
 ###
 
@@ -69,12 +69,12 @@ GET  {{baseURL}}/api/auth
 # }
 
 POST {{baseURL}}/api/auth/logout
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMjExYmRmYzg3MDY2ZTNlMzgxNGNmZSIsInJvbGUiOiJtYW5hZ2VyIiwiaWF0IjoxNzgxMjQxNDM3LCJleHAiOjE3ODEyNDg2Mzd9.QM3XkP1B3kDFLzGTg2CxWmkqYj8-PxH4zr06HsjhJFA
+Authorization: Bearer {{JWTToken}}
 
 ###
-GET {{baseURL}}/api/menu/
+GET {{baseURL}}/api/menu-items/
 
 ### 
 ### "No quotations from bearer to end of token string.""
-DELETE {{baseURL}}/api/menu/6a1c0790da31bdb4401c3679
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMTZkMmIwMzIyNGNmOWU4MzRiYjllMiIsInJvbGUiOiJtYW5hZ2VyIiwiaWF0IjoxNzc5OTYyMzc2LCJleHAiOjE3Nzk5Njk1NzZ9.K_qytN6GN00zaDm_augnpUcn810ONMIC95gTR5GHkg0
+DELETE {{baseURL}}/api/menu-items/6a1c0790da31bdb4401c3679
+Authorization: Bearer {{JWTToken}}

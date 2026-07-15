@@ -1,6 +1,7 @@
 @baseURL=http://localhost:5000
 
 
+@JWTToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhNTU3NjZlOTQ4ZGE1NGQ5NDFlMmI1MCIsInJvbGUiOiJtYW5hZ2VyIiwiaWF0IjoxNzg0MTEyMTMwLCJleHAiOjE3ODQxMTkzMzB9.qzDY65zwJ97bThxB8SPIhr_JvlkWLegcQ4PhyaT_auc
 ###
 POST {{baseURL}}/api/auth/login 
 Content-Type: application/json
@@ -11,19 +12,19 @@ Content-Type: application/json
 }
 
 ###
-GET {{baseURL}}/api/order
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMjExYmRmYzg3MDY2ZTNlMzgxNGNmZSIsInJvbGUiOiJtYW5hZ2VyIiwiaWF0IjoxNzgwNTc1NTA4LCJleHAiOjE3ODA1ODI3MDh9.ubZ6g3z4g643qdZp7n6Vvc8qo2BU5YFL2xVl1x6DYb8
+GET {{baseURL}}/api/orders
+Authorization: Bearer {{JWTToken}}
 
 ###
-GET {{baseURL}}/api/order/6a0b02bae9bcca1c0c3030f0
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMjExYmRmYzg3MDY2ZTNlMzgxNGNmZSIsInJvbGUiOiJtYW5hZ2VyIiwiaWF0IjoxNzgwNTc1NTA4LCJleHAiOjE3ODA1ODI3MDh9.ubZ6g3z4g643qdZp7n6Vvc8qo2BU5YFL2xVl1x6DYb8
+GET {{baseURL}}/api/orders/6a0b02bae9bcca1c0c3030f0
+Authorization: Bearer {{JWTToken}}
 ###
-GET {{baseURL}}/api/order/search?ques=O1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMjExYmRmYzg3MDY2ZTNlMzgxNGNmZSIsInJvbGUiOiJtYW5hZ2VyIiwiaWF0IjoxNzgwNTc1NTA4LCJleHAiOjE3ODA1ODI3MDh9.ubZ6g3z4g643qdZp7n6Vvc8qo2BU5YFL2xVl1x6DYb8
+GET {{baseURL}}/api/orders/search?query=O1
+Authorization: Bearer {{JWTToken}}
 
 ###
-POST {{baseURL}}/api/order
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMjExYmRmYzg3MDY2ZTNlMzgxNGNmZSIsInJvbGUiOiJtYW5hZ2VyIiwiaWF0IjoxNzgwNTc1NTA4LCJleHAiOjE3ODA1ODI3MDh9.ubZ6g3z4g643qdZp7n6Vvc8qo2BU5YFL2xVl1x6DYb8
+POST {{baseURL}}/api/orders
+Authorization: Bearer {{JWTToken}}
 Content-Type: application/json
 
 {
@@ -43,8 +44,8 @@ Content-Type: application/json
 }
 
 ###
-PUT {{baseURL}}/api/order/6a216dcf958f5a558fa5a6ec
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMjExYmRmYzg3MDY2ZTNlMzgxNGNmZSIsInJvbGUiOiJtYW5hZ2VyIiwiaWF0IjoxNzgwNTc1NTA4LCJleHAiOjE3ODA1ODI3MDh9.ubZ6g3z4g643qdZp7n6Vvc8qo2BU5YFL2xVl1x6DYb8
+PUT {{baseURL}}/api/orders/6a216dcf958f5a558fa5a6ec
+Authorization: Bearer {{JWTToken}}
 Content-Type: application/json
 
 {
@@ -64,8 +65,8 @@ Content-Type: application/json
 }
 
 ###
-PATCH {{baseURL}}/api/order/6a216dcf958f5a558fa5a6ec
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMjExYmRmYzg3MDY2ZTNlMzgxNGNmZSIsInJvbGUiOiJtYW5hZ2VyIiwiaWF0IjoxNzgwNTc1NTA4LCJleHAiOjE3ODA1ODI3MDh9.ubZ6g3z4g643qdZp7n6Vvc8qo2BU5YFL2xVl1x6DYb8
+PATCH {{baseURL}}/api/orders/6a216dcf958f5a558fa5a6ec
+Authorization: Bearer {{JWTToken}}
 Content-Type: application/json
 
 {
@@ -73,5 +74,5 @@ Content-Type: application/json
 }
 
 ###
-DELETE {{baseURL}}/api/order/6a216dcf958f5a558fa5a6ec
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMjExYmRmYzg3MDY2ZTNlMzgxNGNmZSIsInJvbGUiOiJtYW5hZ2VyIiwiaWF0IjoxNzgwNTc1NTA4LCJleHAiOjE3ODA1ODI3MDh9.ubZ6g3z4g643qdZp7n6Vvc8qo2BU5YFL2xVl1x6DYb8
+DELETE {{baseURL}}/api/orders/6a216dcf958f5a558fa5a6ec
+Authorization: Bearer {{JWTToken}}
