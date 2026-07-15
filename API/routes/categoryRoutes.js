@@ -31,7 +31,7 @@ const authorizeRole = require("../middleware/roleAuth");
 
 /**
  * @swagger
- * /category:
+ * /menu-categories:
  *   get:
  *     summary: Get all categories
  *     tags: [Category]
@@ -58,13 +58,13 @@ router.get("/", auth, authorizeRole("staff", "manager"), async (req, res) => {
 
 /**
  * @swagger
- * /category/search:
+ * /menu-categories/search:
  *   get:
  *     summary: Search categories by name
  *     tags: [Category]
  *     parameters:
  *       - in: query
- *         name: ques
+ *         name: query
  *         required: true
  *         schema:
  *           type: string
@@ -95,7 +95,7 @@ router.get("/search",auth, authorizeRole("staff", "manager"), async (req, res) =
 
 /**
  * @swagger
- * /category/{id}:
+ * /menu-categories/{id}:
  *   get:
  *     summary: Get a category by ID
  *     tags: [Category]
@@ -131,7 +131,7 @@ router.get("/:id",auth, authorizeRole("staff", "manager"), async (req, res) => {
 
 /**
  * @swagger
- * /category:
+ * /menu-categories:
  *   post:
  *     summary: Create a new category
  *     tags: [Category]
@@ -160,7 +160,7 @@ router.post("/", auth, authorizeRole("manager"), async (req, res) => {
 
 /**
  * @swagger
- * /category/{id}:
+ * /menu-categories/{id}:
  *   put:
  *     summary: Update a category by ID
  *     tags: [Category]
@@ -203,7 +203,7 @@ router.put("/:id", auth, authorizeRole("manager"), async (req, res) => {
 
 /**
  * @swagger
- * /category/{id}:
+ * /menu-categories/{id}:
  *   delete:
  *     summary: Delete a category by ID
  *     tags: [Category]

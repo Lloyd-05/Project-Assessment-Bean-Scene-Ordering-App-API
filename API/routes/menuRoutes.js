@@ -12,7 +12,7 @@ const authorizeRole = require("../middleware/roleAuth");
 
 /**
  * @swagger
- * /menu:
+ * /menu-items:
  *   get:
  *     summary: Get all menu items
  *     tags: [Menu]
@@ -41,13 +41,13 @@ router.get("/", auth, authorizeRole("staff", "manager"), async (req, res) => {
 
 /**
  * @swagger
- * /menu/search:
+ * /menu-items/search:
  *   get:
  *     summary: Search menu items by name
  *     tags: [Menu]
  *     parameters:
  *       - in: query
- *         name: ques
+ *         name: query
  *         required: true
  *         schema:
  *           type: string
@@ -78,7 +78,7 @@ router.get("/search", auth, authorizeRole("staff", "manager"), async (req, res) 
 
 /**
  * @swagger
- * /menu/{id}:
+ * /menu-items/{id}:
  *   get:
  *     summary: Get a menu item by ID
  *     tags: [Menu]
@@ -114,7 +114,7 @@ router.get("/:id", auth, authorizeRole("staff", "manager"), async (req, res) => 
 
 /**
  * @swagger
- * /menu:
+ * /menu-items:
  *   post:
  *     summary: Create a new menu item
  *     tags: [Menu]
@@ -157,7 +157,7 @@ router.post("/", auth, authorizeRole("manager"),async (req, res) => {
 
 /**
  * @swagger
- * /menu/{id}:
+ * /menu-items/{id}:
  *   put:
  *     summary: Replace a menu item by ID
  *     tags: [Menu]
@@ -201,7 +201,7 @@ router.put("/:id", auth, authorizeRole("manager"), async (req, res) => {
 
 /**
  * @swagger
- * /menu/{id}:
+ * /menu-items/{id}:
  *   patch:
  *     summary: Partially update a menu item by ID
  *     tags: [Menu]
@@ -245,7 +245,7 @@ router.patch("/:id", auth, authorizeRole("staff", "manager"), async (req, res) =
 
 /**
  * @swagger
- * /menu/{id}:
+ * /menu-items/{id}:
  *   delete:
  *     summary: Delete a menu item by ID
  *     tags: [Menu]

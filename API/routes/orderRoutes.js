@@ -59,7 +59,7 @@ const authorizeRole = require("../middleware/roleAuth");
 
 /**
  * @swagger
- * /order:
+ * /orders:
  *   get:
  *     summary: Get all orders
  *     tags: [Order]
@@ -91,13 +91,13 @@ router.get("/", auth, authorizeRole("staff", "manager"),async (req, res) => {
 
 /**
  * @swagger
- * /order/search:
+ * /orders/search:
  *   get:
  *     summary: Search orders by table code
  *     tags: [Order]
  *     parameters:
  *       - in: query
- *         name: ques
+ *         name: query
  *         required: true
  *         schema:
  *           type: string
@@ -128,7 +128,7 @@ router.get("/search", auth, authorizeRole("staff", "manager"), async (req, res) 
 
 /**
  * @swagger
- * /order/{id}:
+ * /orders/{id}:
  *   get:
  *     summary: Get a specific order by ID
  *     tags: [Order]
@@ -165,7 +165,7 @@ router.get("/:id", auth, authorizeRole("staff", "manager"), async (req, res) => 
 
 /**
  * @swagger
- * /order:
+ * /orders:
  *   post:
  *     summary: Create a new order
  *     tags: [Order]
@@ -201,7 +201,7 @@ router.post("/", auth, authorizeRole("staff", "manager"), async (req, res) => {
 
 /**
  * @swagger
- * /order/{id}:
+ * /orders/{id}:
  *   put:
  *     summary: Replace an existing order
  *     tags: [Order]
@@ -247,7 +247,7 @@ router.put("/:id", auth, authorizeRole("staff", "manager"), async (req, res) => 
 
 /**
  * @swagger
- * /order/{id}:
+ * /orders/{id}:
  *   patch:
  *     summary: Partially update an order
  *     tags: [Order]
@@ -293,7 +293,7 @@ router.patch("/:id", auth, authorizeRole("staff", "manager"), async (req, res) =
 
 /**
  * @swagger
- * /order/{id}:
+ * /orders/{id}:
  *   delete:
  *     summary: Delete an order by ID
  *     tags: [Order]
