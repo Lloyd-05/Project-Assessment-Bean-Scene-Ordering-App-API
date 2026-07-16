@@ -50,7 +50,7 @@ This API is designed for use exclusively by Bean Scene staff through the officia
 
 ### Clone the repository
 - Open up  Windows Powershall
-- git clone https://github.com/Lloyd-05 Project-Assessment-Bean-Scene-Ordering-App-API
+- git clone https://github.com/Lloyd-05/Project-Assessment-Bean-Scene-Ordering-App-API
 - cd Bean-Scene-Ordering-App-API 
 ### Connect
 - Log into MongoDB Atlas
@@ -62,11 +62,19 @@ This API is designed for use exclusively by Bean Scene staff through the officia
 ### Install dependencies and create a .env file
 - Go back to the local repository 
 - npm install
-- create a .env file
-- add the following environment variables
+- Create a .env file
+- Add the following environment variables
     PORT=5000
     MONGO_URI=<"your MongoDB Atlas connection string">
     JWT_SECRET=<"your-secret-key">
+
+### Creating seed data
+- Run the following commands in the terminal
+    npm run send-category-data
+    npm run send-menu-data
+    npm run send-order-data
+    npm run send-table-data
+    npm run send-user-data
 
 ### Running the API
 - Start the server by entering the following command
